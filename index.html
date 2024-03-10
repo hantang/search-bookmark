@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Bookmark Search with Regexp</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+</head>
+
+<body>
+  <div id="main">
+
+    <h1>HTML Bookmark Search with Regexp</h1>
+    <main>
+      <div id="uploadArea">
+        <div id="dropArea" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+          Drag & drop HTML file here
+        </div>
+        <button onclick="clearContent()" class="clear-btn">Clear All</button>
+        <input type="file" id="fileInput" accept="text/html" style="display: none;">
+        <button onclick="document.getElementById('fileInput').click()" class="upload-btn">Upload A File</button>
+      </div>
+      <p></p>
+
+      <div id="searchArea">
+        <div id="filterConditions">
+          <!-- options -->
+        </div>
+        <button onclick="toggleMoreFilters()" class="expand-btn">Show All</button>
+        <button onclick="filterTable()" class="search-btn">Search</button>
+        <button onclick="resetFilters()" class="reset-btn">Reset</button>
+
+        <p></p>
+        <label for="tableWidthRange">Table Width: </label>
+        <input type="range" id="tableWidthRange" min="50" max="100" step="5" value="80"
+          onchange="adjustTableWidth(this.value)" />
+        <span id="tableWidthLabel">80%</span>
+
+        <p id="dataCount"></p>
+      </div>
+      
+      <div id="fileContent">
+        <!-- <table id="dataTable"></table> -->
+      </div>
+    </main>
+  </div>
+  <script src="assets/js/misc.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/loadfile.js"></script>
+</body>
+
+</html>

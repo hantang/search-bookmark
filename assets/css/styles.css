@@ -1,0 +1,123 @@
+#main {
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+#uploadArea {
+  border: 2px solid #1dca88;
+  margin: auto;
+  width: 80%;
+  margin-bottom: 15px;
+  padding: 15px 0;
+  text-align: center;
+}
+
+#uploadArea button {
+  display: inline-block;
+}
+
+#dropArea {
+  width: 300px;
+  height: 200px;
+  border: 2px dashed #ddd;
+  text-align: center;
+  line-height: 200px;
+  margin: 0 auto;
+}
+
+#searchArea {
+  border: 2px solid #007bff;
+  padding: 20px;
+  margin: auto;
+  width: 80%;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+
+/* table */
+#fileContent {
+  margin: 30px auto 30px auto;
+  width: 90%;
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  padding: 8px;
+
+}
+
+th {
+  cursor: pointer;
+  position: relative;
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: center;
+}
+
+th.asc::after {
+  content: " ⬆️";
+  position: absolute;
+  right: 5px;
+}
+
+th.desc::after {
+  content: " ⬇️";
+  position: absolute;
+  right: 5px;
+}
+
+.filter-condition {
+  margin-bottom: 10px;
+}
+
+.filter-condition select,
+.filter-condition input[type="text"],
+.filter-condition button {
+  margin-right: 5px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.filter-condition input[type="text"] {
+  width: 250px;
+}
+
+/* buttons */
+.upload-btn,
+.clear-btn,
+.search-btn,
+.expand-btn,
+.search-btn,
+.reset-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.upload-btn {
+  background-color: #1dca88;
+  color: white;
+}
+
+.search-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.reset-btn {
+  background-color: #f44336;
+  color: white;
+}
