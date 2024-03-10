@@ -5,10 +5,27 @@ function filterTable() {
     const filterConditions = document.querySelectorAll(".filter-condition");
     const conditions = Array.from(filterConditions).filter(cond => cond.querySelector(".regex-input") && cond.querySelector(".regex-input").value.trim() !== '');
 
-    const logic = document.getElementById("logicSelect").value;
+    const selectedCheckboxes = [];
+    filterConditions[0].querySelectorAll('.filter-checkbox').forEach(checkbox => {
+        if (checkbox.checked) {
+            selectedCheckboxes.push(checkbox.value.toLowerCase());
+        }
+    });
+    const selectedRadioButton = filterConditions[0].querySelector('input[name="filterType"]:checked').value;
+
+    const options = ['Highlight', 'Match Case', 'Regexp'];
+    const logicOptions = ['AND', 'OR']
+    const highlight = selectedCheckboxes.indexOf(options[0].toLowerCase()) >= 0
+    const matchCase = selectedCheckboxes.indexOf(options[1].toLowerCase()) >= 0
+    const useRegexp = selectedCheckboxes.indexOf(options[2].toLowerCase()) >= 0
+    const isAnd = selectedRadioButton == logicOptions[0].toLowerCase();
+    
     let cnt = 0;
     if (conditions.length === 0) {
         cnt = tr.length - 1
+        for(let i =0; i < tr.length; i++) {
+            tr[i].style.display = "";
+        }
     } else {
         // Loop through all rows of the table
         for (let i = 1; i < tr.length; i++) {
@@ -17,39 +34,41 @@ function filterTable() {
 
             conditions.forEach((cond) => {
                 const column = cond.querySelector(".column-select").value;
-                const query = cond.querySelector(".regex-input").value.trim();
-                const regex = new RegExp(query, "i");
+                const queryRaw = cond.querySelector(".regex-input").value.trim();
+                const notLogic = cond.querySelector(".logic-select").value == 'NOT';
                 const td = tr[i].getElementsByTagName("td")[column];
-                const notLogic = cond.querySelector(".logic-select").value;
 
+                const query = useRegexp ? queryRaw:queryRaw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');;
+                const regex = new RegExp(query, matchCase? "g" :"gi");
+                
+                console.log('query', query);
                 // Check if the condition matches the row
                 if (td && (
-                    (notLogic!=="NOT" && regex.test(td.textContent)) ||
-                    (notLogic==="NOT" && !regex.test(td.textContent)) 
+                    (!notLogic && regex.test(td.textContent)) ||
+                    (notLogic && !regex.test(td.textContent)) 
                 )) {
                     matchCount++;
-
-                    // Highlight matching text
-                    const highlightedText = td.textContent.replace(
-                        regex,
-                        (match) => `<span style="background-color: yellow;">${match}</span>`
-                    );
-                    const alist = td.querySelectorAll('a');
-                    if (alist.length == 0) {
-                        td.innerHTML = highlightedText;
-                    } else {
-                        alist[0].innerHTML = highlightedText
+                    if (highlight) {
+                        // Highlight matching text
+                        const highlightedText = td.textContent.replace(
+                            regex,
+                            (match) => `<span style="background-color: yellow;">${match}</span>`
+                        );
+                        const alist = td.querySelectorAll('a');
+                        if (alist.length == 0) {
+                            td.innerHTML = highlightedText;
+                        } else {
+                            alist[0].innerHTML = highlightedText
+                        }
                     }
-                    
                 }
             });
 
             // Determine if the row should be displayed
-            if (logic === "AND" && matchCount === conditions.length) {
+            if ((isAnd && matchCount === conditions.length) ||
+                (!isAnd && matchCount > 0)) {
                 displayRow = true;
-            } else if (logic === "OR" && matchCount > 0) {
-                displayRow = true;
-            }
+            } 
 
             // Update row display
             tr[i].style.display = displayRow ? "" : "none";
@@ -81,8 +100,15 @@ function resetFilters() {
     // Remove highlighting
     const tds = table.getElementsByTagName("td");
     for (let i = 0; i < tds.length; i++) {
-        tds[i].innerHTML = tds[i].innerText; // Reset innerHTML to remove spans
+        const alist = tds[i].querySelectorAll('a');
+        if (alist.length == 0) {
+            tds[i].innerHTML = tds[i].innerText; // Reset innerHTML to remove spans
+        } else {
+            alist[0].innerHTML = tds[i].innerText;
+        }
     }
+    const cnt = document.getElementsByTagName("tr").length - 1;
+    document.getElementById("dataCount").innerHTML = "Total count = " + cnt;
 }
 
 function addOption(i, container) {
@@ -119,9 +145,43 @@ function toggleFirstFilters() {
     p = document.createElement("span");
     p.innerText = "Filter Logic: "
     newCondition.appendChild(p)
-    const logicSelect = createLogicSelect();
-    newCondition.appendChild(logicSelect);
+
+    const tmpOptionDiv = document.createElement("div");
+    const options = ['Highlight', 'Match Case', 'Regexp'];
+    options.forEach(option => {
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = option.toLowerCase();
+        checkbox.classList.add('filter-checkbox');
+        const label = document.createElement('label');
+        label.textContent = option;
+        label.htmlFor = option;
+
+        tmpOptionDiv.appendChild(checkbox);
+        tmpOptionDiv.appendChild(label);
+    });
+    newCondition.appendChild(tmpOptionDiv)
+
+    const logicOptions = ['AND', 'OR']
+    const tmpRadioDiv = document.createElement("div");
+    logicOptions.forEach(option => {
+      const radio = document.createElement('input');
+      radio.type = 'radio';
+      radio.name = 'filterType';
+      radio.value = option.toLowerCase();
+      radio.id = `${option.toLowerCase()}Radio`;
+      radio.checked = option === 'AND';
+      const label = document.createElement('label');
+      label.textContent = option;
+      label.htmlFor = `${option.toLowerCase()}Radio`;
+      tmpRadioDiv.appendChild(radio);
+      tmpRadioDiv.appendChild(label);
+    });
+    newCondition.appendChild(tmpRadioDiv)
+    // const logicSelect = createLogicSelect();
+    // newCondition.appendChild(logicSelect);
     container.appendChild(newCondition);
+
     addOption(0, container);
 }
 
