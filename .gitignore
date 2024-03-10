@@ -1,0 +1,15 @@
+# web
+
+# macos
+.DS_Store
+
+# linux
+*~
+
+# ide
+.vscode/
+.idea/
+
+# more
+temp/
+todo/
