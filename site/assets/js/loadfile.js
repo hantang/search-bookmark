@@ -1,13 +1,3 @@
-function dragOverHandler(event) {
-  event.preventDefault();
-}
-
-function dropHandler(event) {
-  event.preventDefault();
-  const file = event.dataTransfer.files[0];
-  processFile(file);
-}
-
 function processFile(file) {
   clearContent();
   if (file && file.type === 'text/html') {
@@ -112,10 +102,27 @@ function clearContent() {
   document.getElementById("filterConditions").innerHTML = "";
 }
 
-window.onload = function () {
-  document.getElementById('fileInput').addEventListener('change', function (event) {
+function dragOverHandler(event) {
+  event.preventDefault();
+}
+
+function dropHandler(event) {
+  event.preventDefault();
+  const file = event.dataTransfer.files[0];
+  processFile(file);
+}
+
+function openFile() {
+  const fileInput = document.getElementById('fileInput');
+  fileInput.click();
+}
+
+fileInput.addEventListener('change', function(event) {
+  const selectedFile = event.target.files[0];
+  if (selectedFile) {
+    // console.log("open", selectedFile.name)
     const file = event.target.files[0];
     processFile(file);
-  });
-
+    event.target.value = ''; // allow open same file again
 }
+});

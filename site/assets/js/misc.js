@@ -24,17 +24,15 @@ function sortTable(column) {
     }
   }
 
+  console.log(rows)
   // Sort the rows based on the content of the specified column
   rows.sort((a, b) => {
-    const textA = a
-      .getElementsByTagName("td")
-    [column].textContent.toLowerCase();
-    const textB = b
-      .getElementsByTagName("td")
-    [column].textContent.toLowerCase();
+    const textA = a.getElementsByTagName("td")[column].textContent.toLowerCase();
+    const textB = b.getElementsByTagName("td")[column].textContent.toLowerCase();
     return textA.localeCompare(textB) * sortOrder;
   });
 
+  console.log(rows)
   // Reorder the rows in the table
   for (let i = 0; i < rows.length; i++) {
     table.appendChild(rows[i]);

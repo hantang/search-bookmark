@@ -5,6 +5,7 @@ function filterTable() {
     const conditions = document.querySelectorAll(".filter-condition");
 
     let cnt = 0;
+    console.log(tr.length)
     // Loop through all rows of the table
     for (let i = 1; i < tr.length; i++) {
         let displayRow = false;
@@ -25,8 +26,7 @@ function filterTable() {
                 // Highlight matching text
                 const highlightedText = td.textContent.replace(
                     regex,
-                    (match) =>
-                        `<span style="background-color: yellow;">${match}</span>`
+                    (match) => `<span style="background-color: yellow;">${match}</span>`
                 );
                 td.innerHTML = highlightedText;
             }
@@ -46,6 +46,7 @@ function filterTable() {
             cnt += 1;
         }
     }
+    console.log(cnt)
     document.getElementById("dataCount").innerHTML = "Total count = " + cnt;
 }
 
@@ -55,18 +56,19 @@ function resetFilters() {
         input.value = "";
     });
 
+    const table  = document.getElementById("dataTable")
+    if (table == null) {
+        return
+    }
+
     // Reset table visibility
-    const tr = document
-        .getElementById("dataTable")
-        .getElementsByTagName("tr");
+    const tr = table.getElementsByTagName("tr");
     for (let i = 1; i < tr.length; i++) {
         tr[i].style.display = ""; // Show all rows
     }
 
     // Remove highlighting
-    const tds = document
-        .getElementById("dataTable")
-        .getElementsByTagName("td");
+    const tds = table.getElementsByTagName("td");
     for (let i = 0; i < tds.length; i++) {
         tds[i].innerHTML = tds[i].innerText; // Reset innerHTML to remove spans
     }
