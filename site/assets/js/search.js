@@ -2,51 +2,62 @@
 function filterTable() {
     const table = document.getElementById("dataTable");
     const tr = table.getElementsByTagName("tr");
-    const conditions = document.querySelectorAll(".filter-condition");
+    const filterConditions = document.querySelectorAll(".filter-condition");
+    const conditions = Array.from(filterConditions).filter(cond => cond.querySelector(".regex-input") && cond.querySelector(".regex-input").value.trim() !== '');
 
+    const logic = document.getElementById("logicSelect").value;
     let cnt = 0;
-    console.log(tr.length)
-    // Loop through all rows of the table
-    for (let i = 1; i < tr.length; i++) {
-        let displayRow = false;
-        let matchCount = 0;
+    if (conditions.length === 0) {
+        cnt = tr.length - 1
+    } else {
+        // Loop through all rows of the table
+        for (let i = 1; i < tr.length; i++) {
+            let displayRow = false;
+            let matchCount = 0;
 
-        conditions.forEach((cond) => {
-            const column = cond.querySelector(".column-select").value;
-            const regex = new RegExp(
-                cond.querySelector(".regex-input").value,
-                "i"
-            );
-            const td = tr[i].getElementsByTagName("td")[column];
+            conditions.forEach((cond) => {
+                const column = cond.querySelector(".column-select").value;
+                const query = cond.querySelector(".regex-input").value.trim();
+                const regex = new RegExp(query, "i");
+                const td = tr[i].getElementsByTagName("td")[column];
+                const notLogic = cond.querySelector(".logic-select").value;
 
-            // Check if the condition matches the row
-            if (td && regex.test(td.textContent)) {
-                matchCount++;
+                // Check if the condition matches the row
+                if (td && (
+                    (notLogic!=="NOT" && regex.test(td.textContent)) ||
+                    (notLogic==="NOT" && !regex.test(td.textContent)) 
+                )) {
+                    matchCount++;
 
-                // Highlight matching text
-                const highlightedText = td.textContent.replace(
-                    regex,
-                    (match) => `<span style="background-color: yellow;">${match}</span>`
-                );
-                td.innerHTML = highlightedText;
+                    // Highlight matching text
+                    const highlightedText = td.textContent.replace(
+                        regex,
+                        (match) => `<span style="background-color: yellow;">${match}</span>`
+                    );
+                    const alist = td.querySelectorAll('a');
+                    if (alist.length == 0) {
+                        td.innerHTML = highlightedText;
+                    } else {
+                        alist[0].innerHTML = highlightedText
+                    }
+                    
+                }
+            });
+
+            // Determine if the row should be displayed
+            if (logic === "AND" && matchCount === conditions.length) {
+                displayRow = true;
+            } else if (logic === "OR" && matchCount > 0) {
+                displayRow = true;
             }
-        });
 
-        // Determine if the row should be displayed
-        const logic = conditions[0].querySelector(".logic-select").value;
-        if (logic === "AND" && matchCount === conditions.length) {
-            displayRow = true;
-        } else if (logic === "OR" && matchCount > 0) {
-            displayRow = true;
-        }
-
-        // Update row display
-        tr[i].style.display = displayRow ? "" : "none";
-        if (displayRow) {
-            cnt += 1;
+            // Update row display
+            tr[i].style.display = displayRow ? "" : "none";
+            if (displayRow) {
+                cnt += 1;
+            }
         }
     }
-    console.log(cnt)
     document.getElementById("dataCount").innerHTML = "Total count = " + cnt;
 }
 
@@ -81,21 +92,18 @@ function addOption(i, container) {
         return;
     }
     const headersCount = rows[0].cells.length;
-    if (conditions.length >= headersCount || i >= headersCount) {
+    if (conditions.length > headersCount || i >= headersCount) {
         return;
     }
     const newCondition = document.createElement("div");
     newCondition.className = "filter-condition";
     const columnSelect = createColumnSelect(i);
-    const logicSelect = i === 0 ? createLogicSelect() : null;
-    newCondition.appendChild(columnSelect);
-    newCondition.innerHTML += `
-  <input type="text" class="regex-input" placeholder="Enter regex...">
-  `;
 
-    if (logicSelect) {
-        newCondition.appendChild(logicSelect);
-    }
+    newCondition.appendChild(columnSelect);
+    newCondition.innerHTML += `<input type="text" class="regex-input" placeholder="Enter regex...">`;
+
+    const logicSelect = createLogicNotSelect();
+    newCondition.appendChild(logicSelect);
     container.appendChild(newCondition);
 
     // bind to search realtime
@@ -105,6 +113,15 @@ function addOption(i, container) {
 
 function toggleFirstFilters() {
     const container = document.getElementById("filterConditions");
+
+    const newCondition = document.createElement("div");
+    newCondition.className = "filter-condition";
+    p = document.createElement("span");
+    p.innerText = "Filter Logic: "
+    newCondition.appendChild(p)
+    const logicSelect = createLogicSelect();
+    newCondition.appendChild(logicSelect);
+    container.appendChild(newCondition);
     addOption(0, container);
 }
 
@@ -141,6 +158,7 @@ function createColumnSelect(j = 0) {
 function createLogicSelect() {
     const select = document.createElement("select");
     select.className = "logic-select";
+    select.id = "logicSelect"
     const options = ["AND", "OR"]; // todo
     options.forEach((opt) => {
         const option = document.createElement("option");
@@ -151,6 +169,18 @@ function createLogicSelect() {
     return select;
 }
 
+function createLogicNotSelect() {
+    const select = document.createElement("select");
+    select.className = "logic-select";
+    const options = ["DEFAULT", "NOT"];
+    options.forEach((opt) => {
+        const option = document.createElement("option");
+        option.value = opt;
+        option.textContent = opt;
+        select.appendChild(option);
+    });
+    return select;
+}
 
 function renderPages() {
     const cnt = document.getElementById("dataTable").rows.length;
