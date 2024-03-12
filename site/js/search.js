@@ -39,8 +39,9 @@ function filterTable() {
     const isAnd = selectedRadioButton.toLowerCase() == logicOptions[0].toLowerCase();
     
     let cnt = tr.length - 1;
-    resetFilters();
+    resetFilters(all=false);
     if (conditions.length > 0) {
+        cnt = 0;
         // Loop through all rows of the table
         for (let i = 1; i < tr.length; i++) {
             let displayRow = false;
@@ -91,11 +92,13 @@ function filterTable() {
     document.getElementById("dataCount").innerHTML = Math.max(cnt, 0);
 }
 
-function resetFilters() {
+function resetFilters(all=true) {
     // Clear all input fields in the filter conditions
-    document.querySelectorAll(".regex-input").forEach((input) => {
-        input.value = "";
-    });
+    if (all) {
+        document.querySelectorAll(".regex-input").forEach((input) => {
+            input.value = "";
+        });
+    }
 
     const table  = document.getElementById("dataTable")
     if (table == null) {
@@ -250,8 +253,8 @@ function createLogicNotSelect() {
 }
 
 function renderPages() {
-    const cnt = document.getElementById("dataTable").rows.length;
-    document.getElementById("dataCount").innerHTML = cnt;
+    const cnt = document.getElementById("dataTable").rows.length - 1;
+    document.getElementById("dataCount").innerHTML = Math.max(cnt);
     toggleFirstFilters();
 
     const headers = document
