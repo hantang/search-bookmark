@@ -1,98 +1,38 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
 }
 
-#main {
-  margin: 0 auto;
+header {
+  background-color: #4051b5;
+  color: #fff;
+  padding: 30px;
+}
+
+header div {
+  display: inline;
+
+}
+
+header svg {
+  height: 32px;
+}
+
+header h1 {
+  display: inline;
+}
+
+main {
+  margin: 10px auto;
   max-width: 90%;
 }
 
-#uploadArea {
-  border: 2px solid #1dca88;
-  margin: auto;
-  width: 80%;
-  margin-bottom: 15px;
-  padding: 15px 0;
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
   text-align: center;
-}
-
-#uploadArea button {
-  display: inline-block;
-}
-
-#dropArea {
-  width: 300px;
-  height: 200px;
-  border: 2px dashed #ddd;
-  text-align: center;
-  line-height: 200px;
-  margin: 0 auto;
-}
-
-#searchArea {
-  border: 2px solid #007bff;
-  padding: 20px;
-  margin: auto;
-  width: 80%;
-  box-sizing: border-box;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-
-/* table */
-#fileContent {
-  margin: 30px auto 30px auto;
-  width: 90%;
-}
-
-table,
-th,
-td {
-  border-collapse: collapse;
-  border: 1px solid #ddd;
-  padding: 8px;
-
-}
-
-th {
-  cursor: pointer;
-  position: relative;
-  background-color: #f2f2f2;
-  font-weight: bold;
-  text-align: center;
-}
-
-th.asc::after {
-  content: " ⬆️";
-  position: absolute;
-  right: 5px;
-}
-
-th.desc::after {
-  content: " ⬇️";
-  position: absolute;
-  right: 5px;
-}
-
-.filter-condition {
-  margin-bottom: 10px;
-}
-
-.filter-condition select,
-.filter-condition input[type="text"],
-.filter-condition button {
-  margin-right: 5px;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.filter-condition input[type="text"] {
-  width: 250px;
 }
 
 /* buttons */
@@ -128,13 +68,91 @@ th.desc::after {
   color: white;
 }
 
-footer {
-  background-color: #333;
-  color: white;
-  padding-top: 10px;
+#note-area {
+  margin: auto 15%;
+}
+
+#upload-area {
+  border: 2px solid #1dca88;
+  margin: auto;
+  width: 80%;
+  margin-bottom: 15px;
+  padding: 15px 0;
   text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 90%;
-  /* margin: 0 auto; */
+}
+
+#upload-area button {
+  display: inline-block;
+}
+
+#drop-area {
+  max-width: 300px;
+  height: 200px;
+  border: 2px dashed #ddd;
+  text-align: center;
+  line-height: 200px;
+  margin: 0 auto;
+}
+
+#search-area {
+  border: 2px solid #007bff;
+  padding: 20px;
+  margin: auto;
+  width: 80%;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.filter-condition {
+  margin-bottom: 10px;
+}
+
+.filter-condition select,
+.filter-condition input[type="text"],
+.filter-condition button {
+  margin-right: 5px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.filter-condition input[type="text"] {
+  width: 250px;
+}
+
+#file-area {
+  margin: 50px auto;
+  max-width: 90%;
+}
+
+table, th, td {
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+#file-area table {
+  margin: 0 auto;
+}
+
+#file-area th {
+  cursor: pointer;
+  position: relative;
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: center;
+  font-size: large;
+}
+
+#file-area th.asc::after {
+  content: " ⬆️";
+  position: absolute;
+  right: 5px;
+}
+
+#file-area th.desc::after {
+  content: " ⬇️";
+  position: absolute;
+  right: 5px;
 }

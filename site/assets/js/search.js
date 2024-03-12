@@ -1,17 +1,28 @@
-
-function filterTable() {
-    const table = document.getElementById("dataTable");
-    const tr = table.getElementsByTagName("tr");
-    const filterConditions = document.querySelectorAll(".filter-condition");
-    const conditions = Array.from(filterConditions).filter(cond => cond.querySelector(".regex-input") && cond.querySelector(".regex-input").value.trim() !== '');
-
+function getCheckboxHighlight() {
+    const searchOptions = document.querySelectorAll(".filter-condition");
     const selectedCheckboxes = [];
-    filterConditions[0].querySelectorAll('.filter-checkbox').forEach(checkbox => {
+    searchOptions[0].querySelectorAll('.filter-checkbox').forEach(checkbox => {
         if (checkbox.checked) {
             selectedCheckboxes.push(checkbox.value.toLowerCase());
         }
     });
-    const selectedRadioButton = filterConditions[0].querySelector('input[name="filterType"]:checked').value;
+    const options = ['Highlight', 'Match Case', 'Regexp'];
+    return selectedCheckboxes.indexOf(options[0].toLowerCase()) >= 0
+}
+
+function filterTable() {
+    const table = document.getElementById("dataTable");
+    const tr = table.getElementsByTagName("tr");
+    const searchOptions = document.querySelectorAll(".filter-condition");
+    const conditions = Array.from(searchOptions).filter(cond => cond.querySelector(".regex-input") && cond.querySelector(".regex-input").value.trim() !== '');
+
+    const selectedCheckboxes = [];
+    searchOptions[0].querySelectorAll('.filter-checkbox').forEach(checkbox => {
+        if (checkbox.checked) {
+            selectedCheckboxes.push(checkbox.value.toLowerCase());
+        }
+    });
+    const selectedRadioButton = searchOptions[0].querySelector('input[name="filterType"]:checked').value;
 
     const options = ['Highlight', 'Match Case', 'Regexp'];
     const logicOptions = ['AND', 'OR']
@@ -40,8 +51,7 @@ function filterTable() {
 
                 const query = useRegexp ? queryRaw:queryRaw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');;
                 const regex = new RegExp(query, matchCase? "g" :"gi");
-                
-                console.log('query', query);
+
                 // Check if the condition matches the row
                 if (td && (
                     (!notLogic && regex.test(td.textContent)) ||
@@ -49,16 +59,14 @@ function filterTable() {
                 )) {
                     matchCount++;
                     if (highlight) {
-                        // Highlight matching text
                         const highlightedText = td.textContent.replace(
                             regex,
                             (match) => `<span style="background-color: yellow;">${match}</span>`
                         );
-                        const alist = td.querySelectorAll('a');
-                        if (alist.length == 0) {
+                        if (td.childElementCount == 0) {
                             td.innerHTML = highlightedText;
                         } else {
-                            alist[0].innerHTML = highlightedText
+                            td.childNodes[0].innerHTML = highlightedText
                         }
                     }
                 }
@@ -77,7 +85,7 @@ function filterTable() {
             }
         }
     }
-    document.getElementById("dataCount").innerHTML = "Total count = " + cnt;
+    document.getElementById("dataCount").innerHTML = cnt;
 }
 
 function resetFilters() {
@@ -91,24 +99,21 @@ function resetFilters() {
         return
     }
 
-    // Reset table visibility
-    const tr = table.getElementsByTagName("tr");
-    for (let i = 1; i < tr.length; i++) {
-        tr[i].style.display = ""; // Show all rows
+    const trs = table.querySelectorAll('tr[style*="display: none"]');
+    trs.forEach(tr => {
+        tr.style.display = '';
+    });
+
+    if(getCheckboxHighlight()) {
+        const tds = table.querySelectorAll('td span');
+        tds.forEach(span => {
+            if(span.parentNode)
+            span.parentNode.innerHTML = span.parentNode.innerText
+        })
     }
 
-    // Remove highlighting
-    const tds = table.getElementsByTagName("td");
-    for (let i = 0; i < tds.length; i++) {
-        const alist = tds[i].querySelectorAll('a');
-        if (alist.length == 0) {
-            tds[i].innerHTML = tds[i].innerText; // Reset innerHTML to remove spans
-        } else {
-            alist[0].innerHTML = tds[i].innerText;
-        }
-    }
     const cnt = document.getElementsByTagName("tr").length - 1;
-    document.getElementById("dataCount").innerHTML = "Total count = " + cnt;
+    document.getElementById("dataCount").innerHTML = cnt;
 }
 
 function addOption(i, container) {
@@ -138,8 +143,7 @@ function addOption(i, container) {
 }
 
 function toggleFirstFilters() {
-    const container = document.getElementById("filterConditions");
-
+    const container = document.getElementById("search-options");
     const newCondition = document.createElement("div");
     newCondition.className = "filter-condition";
     p = document.createElement("span");
@@ -186,7 +190,7 @@ function toggleFirstFilters() {
 }
 
 function toggleMoreFilters() {
-    const container = document.getElementById("filterConditions");
+    const container = document.getElementById("search-options");
     const rows = document.getElementById("dataTable").rows
     if (rows.length == 0) {
         return;
@@ -244,7 +248,7 @@ function createLogicNotSelect() {
 
 function renderPages() {
     const cnt = document.getElementById("dataTable").rows.length;
-    document.getElementById("dataCount").innerHTML = "Total count = " + cnt;
+    document.getElementById("dataCount").innerHTML = cnt;
     toggleFirstFilters();
 
     const headers = document

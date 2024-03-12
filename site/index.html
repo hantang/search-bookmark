@@ -9,46 +9,59 @@
 </head>
 
 <body>
-  <div id="main">
 
+  <header>
+    <div>
+      <svg width="64px" height="64px" viewBox="0 0 3.84 3.84" version="1" xmlns="http://www.w3.org/2000/svg"
+        enable-background="new 0 0 48 48">
+        <path fill="#F44336"
+          d="m2.96 3.44 -1.04 -0.48 -1.04 0.48V0.72c0 -0.176 0.144 -0.32 0.32 -0.32h1.44c0.176 0 0.32 0.144 0.32 0.32z" />
+      </svg>
+    </div>
     <h1>HTML Bookmark Search with Regexp</h1>
-    <main>
-      <div id="uploadArea">
-        <div id="dropArea" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+  </header>
+
+  <main>
+    <section id="note-area">
+      <h2>Note:</h2>
+      <p>Upload a bookmark file exported from browser, or a table html.</p>
+      <p>Click column names in table to sort the values.</p>
+    </section>
+    <section id="upload-area">
+        <div id="drop-area" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
           Drag & drop HTML file here
         </div>
         <button onclick="clearContent()" class="clear-btn">Clear All</button>
         <button onclick="openFile()" id="openFileButton" class="upload-btn">Upload A File</button>
         <input type="file" id="fileInput" accept="text/html" style="display: none;">
-      </div>
-      <p></p>
+    </section>
 
-      <div id="searchArea">
-        <div id="filterConditions">
+    <section id="search-area">
+        <div id="search-options">
           <!-- options -->
         </div>
         <button onclick="toggleMoreFilters()" class="expand-btn">Show All</button>
         <button onclick="filterTable()" class="search-btn">Search</button>
         <button onclick="resetFilters()" class="reset-btn">Reset</button>
-
         <p></p>
         <label for="tableWidthRange">Table Width: </label>
         <input type="range" id="tableWidthRange" min="50" max="100" step="5" value="80"
           onchange="adjustTableWidth(this.value)" />
         <span id="tableWidthLabel">80%</span>
-
-        <p id="dataCount"></p>
+    </section>
+    <section>
+      <div id="file-area">
+        <p>Bookmark Table</p>
+        <p>Total count: <span id="dataCount"></span></p>
+        <hr>
+        <table id="dataTable"></table>
       </div>
-      
-      <div id="fileContent">
-        <!-- <table id="dataTable"></table> -->
-      </div>
-    </main>
+    </section>
+  </main>
 
-    <footer>
-      &copy; 2024 hantang
-    </footer>
-  </div>
+  <footer>
+    <p>&copy; 2024 hantang</p>
+  </footer>
 
   <script src="assets/js/misc.js"></script>
   <script src="assets/js/search.js"></script>

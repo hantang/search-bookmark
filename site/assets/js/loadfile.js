@@ -25,10 +25,8 @@ function processFile(file) {
 }
 
 function displayTable(table) {
-  const tableDiv = document.getElementById('fileContent');
-  tableDiv.innerHTML = '';
-  table.id = "dataTable";
-  tableDiv.appendChild(table.cloneNode(true));
+  const tableDiv = document.getElementById('dataTable');
+  tableDiv.innerHTML = table.innerHTML;
 }
 
 function findFolder(bookmarkElement) {
@@ -48,12 +46,7 @@ function findFolder(bookmarkElement) {
 }
 
 function displayBookmarks(fileContent) {
-  const tableDiv = document.getElementById('fileContent');
-  tableDiv.innerHTML = '';
-
   const table = document.createElement('table');
-  table.id = "dataTable"
-
   const thead = document.createElement('thead');
   const tbody = document.createElement('tbody');
   const trHead = document.createElement('tr');
@@ -93,13 +86,15 @@ function displayBookmarks(fileContent) {
     }
     tbody.appendChild(tr);
   });
+
   table.appendChild(tbody);
-  tableDiv.appendChild(table.cloneNode(true));
+  displayTable(table)
 }
 
 function clearContent() {
-  document.getElementById('fileContent').innerHTML = '';
-  document.getElementById("filterConditions").innerHTML = "";
+  document.getElementById('dataTable').innerHTML = '';
+  document.getElementById('dataCount').innerHTML = '';
+  document.getElementById("search-options").innerHTML = "";
 }
 
 function dragOverHandler(event) {
@@ -120,7 +115,6 @@ function openFile() {
 fileInput.addEventListener('change', function(event) {
   const selectedFile = event.target.files[0];
   if (selectedFile) {
-    // console.log("open", selectedFile.name)
     const file = event.target.files[0];
     processFile(file);
     event.target.value = ''; // allow open same file again
