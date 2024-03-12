@@ -38,13 +38,9 @@ function filterTable() {
     const useRegexp = selectedCheckboxes.indexOf(options[2].toLowerCase()) >= 0
     const isAnd = selectedRadioButton.toLowerCase() == logicOptions[0].toLowerCase();
     
-    let cnt = 0;
-    if (conditions.length === 0) {
-        cnt = tr.length - 1
-        for(let i =0; i < tr.length; i++) {
-            tr[i].style.display = "";
-        }
-    } else {
+    let cnt = tr.length - 1;
+    resetFilters();
+    if (conditions.length > 0) {
         // Loop through all rows of the table
         for (let i = 1; i < tr.length; i++) {
             let displayRow = false;
