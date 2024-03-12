@@ -1,5 +1,8 @@
 function getCheckboxHighlight() {
     const searchOptions = document.querySelectorAll(".filter-condition");
+    if (!searchOptions) {
+        return false;
+    }
     const selectedCheckboxes = [];
     searchOptions[0].querySelectorAll('.filter-checkbox').forEach(checkbox => {
         if (checkbox.checked) {
