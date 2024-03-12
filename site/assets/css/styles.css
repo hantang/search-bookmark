@@ -2,6 +2,7 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+  font-size: 100%;
 }
 
 header {
@@ -137,6 +138,7 @@ table, th, td {
   min-width: 50%;
   /* table-layout: auto; */
   max-width: 100%;
+  font-size: smaller;
 }
 
 #file-area th {
@@ -145,7 +147,7 @@ table, th, td {
   background-color: #f2f2f2;
   font-weight: bold;
   text-align: center;
-  font-size: large;
+  font-size: larger;
 }
 
 #file-area th.asc::after {

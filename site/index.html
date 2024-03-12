@@ -31,18 +31,19 @@
         <div id="drop-area" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
           Drag & drop HTML file here
         </div>
-        <button onclick="clearContent()" class="clear-btn">Clear All</button>
-        <button onclick="openFile()" id="openFileButton" class="upload-btn">Upload A File</button>
+        <button id="clearButton" class="clear-btn">Clear All</button>
+        <button id="openFileButton" class="upload-btn">Upload A File</button>
         <input type="file" id="fileInput" accept="text/html" style="display: none;">
+        <button id="extensionButton" class="upload-btn">Load Bookmarks</button>
     </section>
 
     <section id="search-area">
         <div id="search-options">
           <!-- options -->
         </div>
-        <button onclick="toggleMoreFilters()" class="expand-btn">Show All</button>
-        <button onclick="filterTable()" class="search-btn">Search</button>
-        <button onclick="resetFilters()" class="reset-btn">Reset</button>
+        <button id="expandButton" class="expand-btn">Show All</button>
+        <button id="searchButton" class="search-btn">Search</button>
+        <button id="resetButton" class="reset-btn">Reset</button>
         <p></p>
         <label for="tableWidthRange">Table Width: </label>
         <input type="range" id="tableWidthRange" min="50" max="100" step="10" value="100"
@@ -66,6 +67,7 @@
   <script src="assets/js/misc.js"></script>
   <script src="assets/js/search.js"></script>
   <script src="assets/js/loadfile.js"></script>
+  <script src="assets/js/loadtree.js"></script>
 </body>
 
 </html>

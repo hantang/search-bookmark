@@ -1,17 +1,19 @@
 function processFile(file) {
-  clearContent();
+  
   if (file && file.type === 'text/html') {
     const reader = new FileReader();
     reader.onload = function (event) {
       const fileContent = event.target.result;
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = fileContent;
-      const table = tempDiv.querySelector('table');
+
+      var table = tempDiv.querySelector('table');
+      if(!table && tempDiv.querySelectorAll('dl dt').length > 0) {
+        table = displayBookmarks(fileContent);
+      }
       if (table) {
+        clearContent();
         displayTable(table);
-        renderPages()
-      } else if (tempDiv.querySelectorAll('dl dt').length > 0) {
-        displayBookmarks(fileContent);
         renderPages()
       } else {
         alert('No table or bookmarks found in the HTML file.');
@@ -22,11 +24,6 @@ function processFile(file) {
   } else {
     alert('Please drop an HTML file.');
   }
-}
-
-function displayTable(table) {
-  const tableDiv = document.getElementById('dataTable');
-  tableDiv.innerHTML = table.innerHTML;
 }
 
 function findFolder(bookmarkElement) {
@@ -68,11 +65,9 @@ function displayBookmarks(fileContent) {
 
   const bookmarkElements = tempDiv.querySelectorAll('a');
   
-  const frequencyCounter = {}; // 哈希表，用于记录元素出现的次数
-
-  // 遍历数组，统计每个元素出现的次数
-  for (let i = 0; i < bookmarkElements.length; i++) {
-      const element = bookmarkElements[i].href;
+  const frequencyCounter = {};
+  for(const bookmarkElement of bookmarkElements) {
+      const element = bookmarkElement.href;
       frequencyCounter[element] = (frequencyCounter[element] || 0) + 1;
   }
 
@@ -106,14 +101,9 @@ function displayBookmarks(fileContent) {
   });
 
   table.appendChild(tbody);
-  displayTable(table)
+  return table
 }
 
-function clearContent() {
-  document.getElementById('dataTable').innerHTML = '';
-  document.getElementById('dataCount').innerHTML = '';
-  document.getElementById("search-options").innerHTML = "";
-}
 
 function dragOverHandler(event) {
   event.preventDefault();
@@ -138,3 +128,9 @@ fileInput.addEventListener('change', function (event) {
     event.target.value = ''; // allow open same file again
   }
 });
+
+document.getElementById('openFileButton').addEventListener('click', openFile);
+document.getElementById('clearButton').addEventListener('click', clearContent);
+document.getElementById('expandButton').addEventListener('click', toggleMoreFilters);
+document.getElementById('searchButton').addEventListener('click', filterTable);
+document.getElementById('resetButton').addEventListener('click', resetFilters);

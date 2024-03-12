@@ -45,3 +45,30 @@ function sortTable(column) {
   table.setAttribute("data-sorted-column", column);
   table.setAttribute("data-sort-order", sortOrder);
 }
+
+function clearContent() {
+  document.getElementById('dataTable').innerHTML = '';
+  document.getElementById('dataCount').innerHTML = '';
+  document.getElementById("search-options").innerHTML = "";
+}
+
+function displayTable(table) {
+  const tableDiv = document.getElementById('dataTable');
+  tableDiv.innerHTML = table.innerHTML;
+}
+
+    // 检查浏览器扩展 API 是否可用
+    const isExtensionEnvironment = typeof chrome !== 'undefined' && chrome.extension;
+    console.log(isExtensionEnvironment, chrome.extension, typeof chrome)
+    if (isExtensionEnvironment) {
+      document.getElementById('extensionButton').style.display = '';
+      document.getElementById('openFileButton').style.display = 'none';
+      // document.getElementById('fileInput').style.display = '';
+      document.getElementById('drop-area').style.display = 'none';
+    } else {
+      document.getElementById('extensionButton').style.display = 'none';
+      document.getElementById('openFileButton').style.display = '';
+      // document.getElementById('fileInput').style.display = '';
+      document.getElementById('drop-area').style.display = '';
+    }
+    

@@ -1,6 +1,6 @@
 function getCheckboxHighlight() {
     const searchOptions = document.querySelectorAll(".filter-condition");
-    if (!searchOptions) {
+    if (searchOptions.length == 0) {
         return false;
     }
     const selectedCheckboxes = [];
@@ -20,19 +20,23 @@ function filterTable() {
     const conditions = Array.from(searchOptions).filter(cond => cond.querySelector(".regex-input") && cond.querySelector(".regex-input").value.trim() !== '');
 
     const selectedCheckboxes = [];
-    searchOptions[0].querySelectorAll('.filter-checkbox').forEach(checkbox => {
-        if (checkbox.checked) {
-            selectedCheckboxes.push(checkbox.value.toLowerCase());
-        }
-    });
-    const selectedRadioButton = searchOptions[0].querySelector('input[name="filterType"]:checked').value;
+    let selectedRadioButton = 'AND';
+    if (searchOptions.length > 0) {
+        const firstOption = searchOptions[0]
+        firstOption.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedCheckboxes.push(checkbox.value.toLowerCase());
+            }
+        });
+        selectedRadioButton = firstOption.querySelector('input[name="filterType"]:checked').value;
+    }
 
     const options = ['Highlight', 'Match Case', 'Regexp'];
     const logicOptions = ['AND', 'OR']
     const highlight = selectedCheckboxes.indexOf(options[0].toLowerCase()) >= 0
     const matchCase = selectedCheckboxes.indexOf(options[1].toLowerCase()) >= 0
     const useRegexp = selectedCheckboxes.indexOf(options[2].toLowerCase()) >= 0
-    const isAnd = selectedRadioButton == logicOptions[0].toLowerCase();
+    const isAnd = selectedRadioButton.toLowerCase() == logicOptions[0].toLowerCase();
     
     let cnt = 0;
     if (conditions.length === 0) {
@@ -88,7 +92,7 @@ function filterTable() {
             }
         }
     }
-    document.getElementById("dataCount").innerHTML = cnt;
+    document.getElementById("dataCount").innerHTML = Math.max(cnt, 0);
 }
 
 function resetFilters() {
@@ -116,7 +120,7 @@ function resetFilters() {
     }
 
     const cnt = document.getElementsByTagName("tr").length - 1;
-    document.getElementById("dataCount").innerHTML = cnt;
+    document.getElementById("dataCount").innerHTML = Math.max(cnt, 0);
 }
 
 function addOption(i, container) {
