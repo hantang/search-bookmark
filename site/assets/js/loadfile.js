@@ -53,7 +53,7 @@ function displayBookmarks(fileContent) {
   const thead = document.createElement('thead');
   const tbody = document.createElement('tbody');
   const trHead = document.createElement('tr');
-  const parts = new Array("Folder", "Bookmark", "Website", "FullFolder", "HasURLPath");
+  const parts = new Array("Folder", "Bookmark", "Website", "FullFolder", "HasPath", "Duplicated");
   for (let i = 0; i < parts.length; i++) {
     const th = document.createElement('th');
     th.textContent = parts[i];
@@ -67,6 +67,15 @@ function displayBookmarks(fileContent) {
   tempDiv.innerHTML = fileContent;
 
   const bookmarkElements = tempDiv.querySelectorAll('a');
+  
+  const frequencyCounter = {}; // 哈希表，用于记录元素出现的次数
+
+  // 遍历数组，统计每个元素出现的次数
+  for (let i = 0; i < bookmarkElements.length; i++) {
+      const element = bookmarkElements[i].href;
+      frequencyCounter[element] = (frequencyCounter[element] || 0) + 1;
+  }
+
   bookmarkElements.forEach(bookmarkElement => {
     const title = bookmarkElement.textContent.trim();
     const href = bookmarkElement.href;
@@ -77,8 +86,9 @@ function displayBookmarks(fileContent) {
     const url = new URL(href);
     const hostname = url.hostname;
     const hasPath = url.pathname && url.pathname !== '/';
+    const dup = frequencyCounter[href] > 1
 
-    const texts = new Array(folder, "", hostname, fullFolder, hasPath);
+    const texts = new Array(folder, "", hostname, fullFolder, hasPath, dup);
     const tr = document.createElement('tr');
     for (let i = 0; i < parts.length; i++) {
       const td = document.createElement('td');

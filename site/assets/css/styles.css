@@ -135,7 +135,8 @@ table, th, td {
 #file-area table {
   margin: 0 auto;
   min-width: 50%;
-  overflow: auto;
+  /* table-layout: auto; */
+  max-width: 100%;
 }
 
 #file-area th {
@@ -157,4 +158,9 @@ table, th, td {
   content: " ⬇️";
   position: absolute;
   right: 5px;
+}
+
+#file-area th, #file-area td {
+  /* max-width: 200px; */
+  word-wrap: break-word; 
 }
