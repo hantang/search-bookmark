@@ -30,19 +30,22 @@ function displayTable(table) {
 }
 
 function findFolder(bookmarkElement) {
-  let folder = '';
+  let fullFolder = '';
   let currentNode = bookmarkElement.parentElement;
   while (currentNode) {
-    if (currentNode.tagName === 'DL') {
-      folder = currentNode.previousElementSibling.textContent.trim();
-      return folder;
-    } else if (currentNode.tagName === 'H3') {
+    tagName = currentNode.tagName.toLowerCase()
+    let folder = ''
+    if (tagName === 'dl') {
+      folder = currentNode.previousElementSibling.textContent.trim(); // h3
+    } else if (currentNode.tagName === 'h3') {
       folder = currentNode.textContent.trim();
-      return folder;
+    }
+    if (folder) {
+      fullFolder = fullFolder ? `${folder}/${fullFolder}` : folder;
     }
     currentNode = currentNode.parentElement;
   }
-  return folder;
+  return fullFolder;
 }
 
 function displayBookmarks(fileContent) {
@@ -50,7 +53,7 @@ function displayBookmarks(fileContent) {
   const thead = document.createElement('thead');
   const tbody = document.createElement('tbody');
   const trHead = document.createElement('tr');
-  const parts = new Array("Folder", "Bookmark", "Website");
+  const parts = new Array("Folder", "Bookmark", "Website", "FullFolder", "HasURLPath");
   for (let i = 0; i < parts.length; i++) {
     const th = document.createElement('th');
     th.textContent = parts[i];
@@ -66,11 +69,16 @@ function displayBookmarks(fileContent) {
   const bookmarkElements = tempDiv.querySelectorAll('a');
   bookmarkElements.forEach(bookmarkElement => {
     const title = bookmarkElement.textContent.trim();
-    const url = bookmarkElement.href;
-    const folder = findFolder(bookmarkElement);
-    const hostname = new URL(url).hostname;
+    const href = bookmarkElement.href;
+    const fullFolder = findFolder(bookmarkElement);
+    const folders = fullFolder.split("/")
+    const folder = folders ? folders[folders.length - 1] : '';
 
-    const texts = new Array(folder, "", hostname);
+    const url = new URL(href);
+    const hostname = url.hostname;
+    const hasPath = url.pathname && url.pathname !== '/';
+
+    const texts = new Array(folder, "", hostname, fullFolder, hasPath);
     const tr = document.createElement('tr');
     for (let i = 0; i < parts.length; i++) {
       const td = document.createElement('td');
@@ -112,11 +120,11 @@ function openFile() {
   fileInput.click();
 }
 
-fileInput.addEventListener('change', function(event) {
+fileInput.addEventListener('change', function (event) {
   const selectedFile = event.target.files[0];
   if (selectedFile) {
     const file = event.target.files[0];
     processFile(file);
     event.target.value = ''; // allow open same file again
-}
+  }
 });
