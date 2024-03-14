@@ -39,7 +39,7 @@ function renderPages(new_table, clear = true) {
   }
   document.getElementById(bookmarkAreaStr).style.display = '';
   document.getElementById(searchAreaStr).style.display = '';
-  
+
   // displayTable(new_table);
   const table = document.getElementById(bookmarkTableStr)
   table.innerHTML = new_table.innerHTML;
