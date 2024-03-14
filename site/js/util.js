@@ -198,10 +198,10 @@ function createRadioOrCheckbox(itemList, className, isRadio = false, name = '') 
   return container;
 }
 
-function createTextInput(label, className, name) {
+function createTextInput(item, className, name) {
   const container = document.createElement("div");
   const label = document.createElement('label');
-  label.textContent = label + ': ';
+  label.textContent = item + ': ';
   const input = document.createElement('input');
   input.type = 'text';
   input.name = name;
