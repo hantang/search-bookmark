@@ -30,14 +30,11 @@ function clearContent() {
 }
 
 function renderPages(new_table, clear = true) {
-  console.log("Render pages")
   if (clear) {
-    console.log("clearContent")
     clearContent();
   }
 
   if (new_table === null) {
-    console.log("table is null")
     return;
   }
   document.getElementById(bookmarkAreaStr).style.display = '';
@@ -124,7 +121,6 @@ function toggleMoreSearchConditions() {
   const className = searchClassName;
   const searchOptions = document.querySelectorAll(`.${className}`);
   const expandButton = document.getElementById(expandButtonStr);
-  console.log(searchOptions.length)
   if (searchOptions.length > 3) {
     if (searchOptions[3].style.display != '') {
       for (let i = 3; i < searchOptions.length; i++) {
@@ -139,7 +135,6 @@ function toggleMoreSearchConditions() {
       expandButton.innerText = 'Expand';
     }
   }
-
 }
 
 function filterTableData() {
