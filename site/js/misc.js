@@ -57,18 +57,16 @@ function displayTable(table) {
   tableDiv.innerHTML = table.innerHTML;
 }
 
-    // 检查浏览器扩展 API 是否可用
-    const isExtensionEnvironment = typeof chrome !== 'undefined' && chrome.extension;
-    console.log(isExtensionEnvironment, chrome.extension, typeof chrome)
-    if (isExtensionEnvironment) {
-      document.getElementById('extensionButton').style.display = '';
-      document.getElementById('openFileButton').style.display = 'none';
-      // document.getElementById('fileInput').style.display = '';
-      document.getElementById('drop-area').style.display = 'none';
-    } else {
-      document.getElementById('extensionButton').style.display = 'none';
-      document.getElementById('openFileButton').style.display = '';
-      // document.getElementById('fileInput').style.display = '';
-      document.getElementById('drop-area').style.display = '';
-    }
-    
+// check chrome extension api env
+const isExtensionEnvironment = typeof chrome !== 'undefined' && chrome.extension;
+if (isExtensionEnvironment) {
+  document.getElementById('extensionButton').style.display = '';
+  document.getElementById('openFileButton').style.display = 'none';
+  // document.getElementById('fileInput').style.display = '';
+  document.getElementById('drop-area').style.display = 'none';
+} else {
+  document.getElementById('extensionButton').style.display = 'none';
+  document.getElementById('openFileButton').style.display = '';
+  // document.getElementById('fileInput').style.display = '';
+  document.getElementById('drop-area').style.display = '';
+}

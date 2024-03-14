@@ -1,5 +1,4 @@
 function processFile(file) {
-  
   if (file && file.type === 'text/html') {
     const reader = new FileReader();
     reader.onload = function (event) {
@@ -8,7 +7,7 @@ function processFile(file) {
       tempDiv.innerHTML = fileContent;
 
       var table = tempDiv.querySelector('table');
-      if(!table && tempDiv.querySelectorAll('dl dt').length > 0) {
+      if (!table && tempDiv.querySelectorAll('dl dt').length > 0) {
         table = displayBookmarks(fileContent);
       }
       if (table) {
@@ -64,11 +63,11 @@ function displayBookmarks(fileContent) {
   tempDiv.innerHTML = fileContent;
 
   const bookmarkElements = tempDiv.querySelectorAll('a');
-  
+
   const frequencyCounter = {};
-  for(const bookmarkElement of bookmarkElements) {
-      const element = bookmarkElement.href;
-      frequencyCounter[element] = (frequencyCounter[element] || 0) + 1;
+  for (const bookmarkElement of bookmarkElements) {
+    const element = bookmarkElement.href;
+    frequencyCounter[element] = (frequencyCounter[element] || 0) + 1;
   }
 
   bookmarkElements.forEach((bookmarkElement, index) => {

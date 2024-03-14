@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Bookmark Search",
-  "version": "0.1",
+  "version": "0.1.1",
   "description": "HTML Bookmark Search with Regexp",
   "short_name": "bookmark-search",
   "author": "hantang",
@@ -9,7 +9,8 @@
   "permissions": [
     "activeTab",
     "bookmarks",
-    "storage"
+    "storage",
+    "history"
   ],
   "action": {
     "default_popup": "popup.html",
