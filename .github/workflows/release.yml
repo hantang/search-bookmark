@@ -1,0 +1,32 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+      - name: Install Dependencies
+        run: npm install
+      - name: Build Site
+        run: npm run build
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            release/bookmark_search-*
+
+      - name: Upload built artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: release/bookmark_search-*
+          retention-days: ${{ inputs.retention_days }}
