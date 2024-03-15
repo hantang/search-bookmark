@@ -128,6 +128,8 @@ input[type="text"] {
   width: 100%;
   max-width: 300px;
   margin-right: 10px;
+  font-size: 16px;
+  font-family: "Roboto Mono", monospace;
 }
 
 fieldset {
@@ -219,7 +221,8 @@ input[type="text"]:hover {
 }
 
 .search-condition label {
-  width: 150px;
+  width: 200px;
+  /* overflow-wrap: break-word; */
   text-align: right;
   margin-right: 10px;
 }
