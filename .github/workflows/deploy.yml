@@ -1,13 +1,9 @@
-name: Deploy static content to Pages
+name: Deploy Site
 
 on:
   push:
     branches:
       - "main"
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
   deploy:
