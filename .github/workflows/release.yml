@@ -28,16 +28,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Archive source code as ZIP
-        run: zip -r source.zip .
-
-      - name: Archive source code as TAR.GZ
-        run: tar -czf source.tar.gz .
-
       - name: Upload built artifact
         uses: actions/upload-artifact@v4
         with:
-          path: |
-            release/bookmark_search-*
-            source.zip
-            source.tar.gz
+          path: release/bookmark_search-*
