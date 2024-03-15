@@ -238,3 +238,15 @@ input[type="text"]:hover {
 #bookmark-area p {
   margin: 0 10%;
 }
+
+#bookmark-area th.asc::after {
+  content: "\2191";
+  font-size: larger;
+  margin: 0 5px;
+}
+
+#bookmark-area th.desc::after {
+  content: "\2193";
+  font-size: larger;
+  margin: 0 5px;
+}
