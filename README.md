@@ -1,12 +1,29 @@
 # bookmark-search
 
-🎨 Chrome extension is supported, icon is from [iconfinder](https://www.iconfinder.com/icons/8725808). 
-You can open `chrome://extensions/`, enable *Developer mode* and then *Load upacked* this project.
+Search your bookmarks in a more flexible way.
 
-Just upload a bookmark file (html format) exported from browsers
-or any html contained a `<table>`,
-[this site](https://hantang.github.io/bookmark-search) will list
-all bookmarks as a table format. Then you can filter the table
-data with highlight, match case, and regular expression.
+## Features
 
-![snapshot](images/snapshot-new.png)
+- Load from browser's bookmarks (Chrome extension only).
+- Parse from bookmark file automatically.
+- RegExp search.
+- Highlight.
+- Sort by columns.
+
+## Versions
+
+- 🎨 Chrome extension: download this project first, then open `chrome://extensions/` in your browser, enable *Developer mode* and then *Load upacked* this project root directory.
+- Web online version, use this [site link](https://hantang.github.io/bookmark-search).
+
+## Snapshots
+
+- extension version:
+  ![snapshot](images/snapshot-extension.png)
+
+- web online version:
+  ![snapshot](images/snapshot-web.png)
+
+
+## More 
+
+The icon is from [iconfinder](https://www.iconfinder.com/icons/8725808).
