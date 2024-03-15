@@ -8,7 +8,7 @@
     "chrome-extension"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "web-ext build --source-dir src -a release"
   },
   "repository": {
     "type": "git",
