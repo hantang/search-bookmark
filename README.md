@@ -12,7 +12,7 @@ Search your bookmarks in a more flexible way.
 
 ## Versions
 
-- 🎨 Chrome extension: download this project first, then open `chrome://extensions/` in your browser, enable *Developer mode* and then *Load upacked* this project root directory.
+- 🎨 Chrome extension: download `zip` file from latest [release](https://github.com/hantang/bookmark-search/releases) and unpacked it, then open `chrome://extensions/` in your browser, enable *Developer mode* and then *Load upacked* the directory.
 - Web online version, use this [site link](https://hantang.github.io/bookmark-search).
 
 ## Snapshots
