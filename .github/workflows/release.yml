@@ -37,7 +37,7 @@ jobs:
       - name: Upload built artifact
         uses: actions/upload-artifact@v4
         with:
-          path:
-            - release/bookmark_search-*
-            - source.zip
-            - source.tar.gz
+          path: |
+            release/bookmark_search-*
+            source.zip
+            source.tar.gz
