@@ -158,12 +158,12 @@ function loadBookmarkFile(file) {
 }
 
 // file drag and drop, open
-function dragOverHandler(event) {
-  event.preventDefault();
+function preventDefaults(e) {
+  e.preventDefault();
+  e.stopPropagation();
 }
 
 function dropHandler(event) {
-  event.preventDefault();
   const file = event.dataTransfer.files[0];
   loadBookmarkFile(file);
 }

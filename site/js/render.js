@@ -3,7 +3,10 @@ const clearButtonStr = 'clear-button';
 const expandButtonStr = 'expand-button';
 const searchButtonStr = 'search-button';
 const resetButtonStr = 'reset-button';
+const extensionButtonStr = 'extension-button';
+const openFileButtonStr = 'open-file-button';
 
+const dropAreaStr = 'drop-area';
 const searchOptionStr = 'search-options';
 const searchAreaStr = 'search-area';
 const searchLogicOptions = ["AND", "OR"];
@@ -268,28 +271,28 @@ function checkConditionOption(index = 0) {
 }
 
 // add events
-window.addEventListener('DOMContentLoaded', (event) => {
-  // check chrome extension api env
-  const extensionButton = document.getElementById('extension-button');
-  const openFileButton = document.getElementById('open-file-button');
-  const dropArea = document.getElementById('drop-area');
+// check chrome extension api env
+const isExtensionEnvironment = typeof chrome !== 'undefined' && chrome.extension;
+if (isExtensionEnvironment) {
+  const extensionButton = document.getElementById(extensionButtonStr);
+  extensionButton.style.display = '';
+  extensionButton.addEventListener('click', loadBookmarkTree);
+} else {
+  const openFileButton = document.getElementById(openFileButtonStr);
   const fileInput = document.getElementById(openFileStr);
+  const dropArea = document.getElementById(dropAreaStr);
+  openFileButton.style.display = '';
+  dropArea.style.display = '';
 
-  const isExtensionEnvironment = typeof chrome !== 'undefined' && chrome.extension;
-  if (isExtensionEnvironment) {
-    extensionButton.style.display = '';
-    extensionButton.addEventListener('click', loadBookmarkTree);
-  } else {
-    openFileButton.style.display = '';
-    dropArea.style.display = '';
-    dropArea.addEventListener('ondrop', dropHandler);
-    dropArea.addEventListener('ondragover', dragOverHandler);
-    openFileButton.addEventListener('click', openBookmarkFile);
-    fileInput.addEventListener('change', openSameFileAgain);
-  }
+  openFileButton.addEventListener('click', openBookmarkFile);
+  fileInput.addEventListener('change', openSameFileAgain);
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, preventDefaults, false);
+  });
+  dropArea.addEventListener('drop', dropHandler, false);
+}
 
-  document.getElementById(clearButtonStr).addEventListener('click', clearContent);
-  document.getElementById(expandButtonStr).addEventListener('click', toggleMoreSearchConditions);
-  document.getElementById(searchButtonStr).addEventListener('click', filterTableData);
-  document.getElementById(resetButtonStr).addEventListener('click', resetSearchAndTable);
-});
+document.getElementById(clearButtonStr).addEventListener('click', clearContent);
+document.getElementById(expandButtonStr).addEventListener('click', toggleMoreSearchConditions);
+document.getElementById(searchButtonStr).addEventListener('click', filterTableData);
+document.getElementById(resetButtonStr).addEventListener('click', resetSearchAndTable);

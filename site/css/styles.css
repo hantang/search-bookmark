@@ -7,6 +7,7 @@
   --text-color: #000000;
   --footer-bg-color: #121212;
   --footer-color: #ffffff;
+  --area-color: #272B35;
   --code-color: #f5f5f5;
 }
 
@@ -188,9 +189,10 @@ input[type="text"]:hover {
 }
 
 #drop-area {
-  width: 50%;
+  width: 70%;
   height: 200px;
-  border: 2px dashed var(--code-color);
+  border: 5px dashed var(--code-color);
+  border-radius: 15px;
   text-align: center;
   line-height: 200px;
   margin: 10px auto;
@@ -199,7 +201,7 @@ input[type="text"]:hover {
 }
 
 #search-area {
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--primary-color);  
   padding: 20px;
   width: 80%;
   box-sizing: border-box;
