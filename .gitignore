@@ -17,3 +17,5 @@ release/
 # more
 temp/
 todo/
+/site
+/out
