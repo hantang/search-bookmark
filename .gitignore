@@ -17,5 +17,7 @@ release/
 # more
 temp/
 todo/
+
 /site
 /out
+/dist

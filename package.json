@@ -1,26 +1,29 @@
 {
-  "name": "bookmark-search",
+  "name": "search-bookmark",
   "version": "0.4.2",
   "description": "HTML Bookmark Search with RegExp",
   "main": "main.js",
   "keywords": [
+    "bookmarks",
     "bookmark-manage",
     "chrome-extension"
   ],
   "scripts": {
-    "build": "web-ext build --source-dir src -a release"
+    "release": "web-ext build --source-dir src -a release",
+    "bookmark": "zip -r ./dist/search-bookmark.zip ./src",
+    "build": "npm run release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hantang/bookmark-search.git"
+    "url": "git+https://github.com/hantang/search-bookmark.git"
   },
   "author": "hantang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hantang/bookmark-search/issues"
+    "url": "https://github.com/hantang/search-bookmark/issues"
   },
-  "homepage": "https://github.com/hantang/bookmark-search#readme",
+  "homepage": "https://github.com/hantang/search-bookmark#readme",
   "dependencies": {
-    "web-ext": "^7.11.0"
+    "web-ext": "^8.3.0"
   }
 }
