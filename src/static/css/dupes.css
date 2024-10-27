@@ -1,0 +1,154 @@
+:root {
+  --primary-color: #3f51b5;
+  --secondary-color: #ff4081;
+  --accent-color: #536dfe;
+  --more-color: #1dca88;
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --footer-bg-color: #121212;
+  --footer-color: #ffffff;
+  --area-color: #272b35;
+  --code-color: #f5f5f5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #1d2129;
+    --text-color: #ffffff;
+    --code-color: #272b35;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 100%;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  color: var(--footer-color);
+  background-color: var(--primary-color);
+  padding: 30px;
+  height: 80px;
+}
+
+header div,
+header h1 {
+  display: inline;
+}
+
+header svg,
+header img {
+  height: 48px;
+  margin-right: 10px;
+}
+
+footer {
+  color: var(--footer-color);
+  background-color: var(--footer-bg-color);
+  text-align: center;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  flex-grow: 1;
+  /* margin-top: 2rem;
+  margin-bottom: 2rem; */
+  max-width: 90%;
+  /* margin: 2rem auto; */
+  padding: 0 2rem;
+  margin: 2rem 5%;
+}
+
+button {
+  padding: 5px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  /* text-transform: uppercase; */
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 2px 5px;
+  font-variant: small-caps;
+  font-size: larger;
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  width: auto;
+  text-align: left;
+  margin: 0 5px;
+}
+
+select {
+  /* appearance: none; */
+  background-color: transparent;
+  border: 1px solid #ccc;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  margin: 10px auto;
+  font-size: 1rem;
+}
+
+#tableCheckboxRules {
+  margin: 5px auto;
+  padding: 4px 2px;
+}
+#tableCheckboxRules,
+#buttonsRemove {
+  background-color: #fff3cd; /* 警告背景色 */
+  color: #856404; /* 警告文本颜色 */
+}
+
+/* 鼠标悬停效果 */
+#tableCheckboxRules:hover,
+#buttonsRemove:hover {
+  background-color: #ffeeba; /* 悬停时更亮的警告色 */
+}
+
+#sec1 {
+  border: 2px dashed var(--primary-color);
+  padding: 10px;
+  /* width: 80%; */
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#sec2:not(:empty) {
+  /* border: 2px solid var(--more-color); */
+  margin-bottom: 15px;
+  padding: 5px 25px;
+  text-align: center;
+}
+
+#textMessage:not(:empty) {
+  background-color: #e7f3fe;
+  color: var(--accent-color);
+  padding: 10px;
+  border: 1px solid #bce8f1;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+#textMessage:not(:empty)::before {
+  content: "ℹ️";
+  margin-right: 5px;
+  font-size: 16px;
+}

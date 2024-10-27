@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark Dupes</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/icons/icon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="assets/icons/icon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="assets/icons/icon-48x48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="assets/icons/icon-64x64.png" sizes="64x64" type="image/png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-icon.png" sizes="180x180">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="static/css/dupes.css">
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <img src="assets/logo.svg" alt="Bookmarks">
+        </div>
+        <h1><span id="headTitle">Bookmark Dupes</span></h1>
+    </header>
+
+    <main>
+        <div id="tableCheckboxRules"></div>
+        <section id="sec1">
+            <div id="tableRules"></div>
+            <div id="buttonsRules"></div>
+            <div id="buttonsBase"></div>
+        </section>
+
+        <section id="sec2">
+            <div id="buttonsMark"></div>
+            <div id="selectFolder"></div>
+            <div id="buttonsFolders"></div>
+            <div id="checkboxOptions"></div>
+            <div id="buttonsRemove"></div>
+        </section>
+        <table>
+            <tr>
+                <td id="buttonStop"></td>
+                <td id="progressBar"></td>
+                <td id="textMessage"></td>
+            </tr>
+        </table>
+        <section>
+            <div id="tableCount"></div>
+            <div id="tableBookmarks"></div>
+        </section>
+
+    </main>
+    <footer>
+        <p>&copy; <span id="currentYear"></span>
+            <a href="https://github.com/hantang/search-bookmark" target="_blank">hantang</a>
+            | Forked from: <a href="https://github.com/vaeth/bookmarkdupes" target="_blank">vaeth</a>
+        </p>
+    </footer>
+    <script src="static/js/dupes.js"></script>
+</body>
+
+</html>

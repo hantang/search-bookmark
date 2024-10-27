@@ -1,0 +1,694 @@
+{
+  "extensionName": {
+    "message": "Bookmark Dupes",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "显示/移除重复的书签、空文件夹或描述",
+    "description": "Description of the extension"
+  },
+  "errorNoBookmarks": {
+    "message": "This browser version is lacking the required bookmarks API. Bookmark Dupes and similar extensions cannot work without that API. Sorry.", // new
+    "description": "Report that the extension will not work on that browser"
+  },
+  "warningExpertStrong": {
+    "message": "\u26A0\u00A0", // new
+    "description": "First part of warning to enable expert mode: strong"
+  },
+  "warningExpertText": {
+    "message": "Do not enable expert mode unless you fully understand the consequences!", // new
+    "description": "Second part of warning to enable expert mode: normal"
+  },
+  "checkboxRules": {
+    "message": "Expert mode: use customized rules to match similar bookmarks or to ignore bookmarks when searching.", // new
+    "description": "Checkbox text for switching on/off regexp rules"
+  },
+  "titleCheckboxRules": {
+    "message": "With this option bookmarks can be ignored or similar bookmarks can be found. The details are specified in terms of regular expressions.", // new
+    "description": "Explain what regular expressions are used for"
+  },
+  "radioFilter": {
+    "message": "Filter", // new
+    "description": "Radio button for filtering a bookmark. The text should be short"
+  },
+  "titleRadioFilter": {
+    "message": "Bookmarks matching the criteria will be ignored.", // new
+    "description": "Explain that by choosing that button the corresponding bookmark will be ignored"
+  },
+  "radioUrl": {
+    "message": "Modify", // new
+    "description": "Radio button for preprocessing a URL. The text should be short"
+  },
+  "titleRadioUrl": {
+    "message": "Before checking URLs to find bookmark dupes, the URL of matching bookmarks will be preprocessed according to the specified rule.", // new
+    "description": "Explain that by choosing that button the url of matching bookmarks will be preprocessed"
+  },
+  "radioOff": {
+    "message": "Off", // new
+    "description": "Radio button for ignoring the rule. The text should be short"
+  },
+  "titleRadioOff": {
+    "message": "This rule has no effect.", // new
+    "description": "Explain that by choosing that button the rule has no effect"
+  },
+  "ruleName": {
+    "message": "Name matches", // new
+    "description": "Input field for matching the name. The text should be short"
+  },
+  "titleRuleName": {
+    "message": "The rule applies to a bookmark if the bookmark path (folders + name) matches the regular expression. The separator for folders is \\0 or \\x00.", // new
+    "description": "Explain that bookmarks whose name matches the regular expression will be selected and that folders names are separated by \\0 or \\x00"
+  },
+  "ruleNameNegation": {
+    "message": "Name does not match", // new
+    "description": "Input field for not matching the name. The text should be short"
+  },
+  "titleRuleNameNegation": {
+    "message": "The rule applies to a bookmark if the bookmark path (folders + name) does not match the regular expression. The separator for folders is \\0 or \\x00.", // new
+    "description": "Explain that bookmarks whose names does not match the regular expression will be selected and that folders names are separated by \\0 or \\x00"
+  },
+  "ruleUrl": {
+    "message": "URL matches", // new
+    "description": "Input field for matching the URL. The text should be short"
+  },
+  "titleRuleUrl": {
+    "message": "The rule applies to a bookmark if its URL matches the regular expression.", // new
+    "description": "Explain that bookmarks whose URL matches the regular expression will be selected"
+  },
+  "ruleUrlNegation": {
+    "message": "URL does not match", // new
+    "description": "Input field for matching the URL. The text should be short"
+  },
+  "titleRuleUrlNegation": {
+    "message": "The rule applies to a bookmark if its URL does not match the regular expression.", // new
+    "description": "Explain that bookmarks whose URL does not match the regular expression will be selected"
+  },
+  "ruleSearch": {
+    "message": "Replace URL matches", // new
+    "description": "Input field for the search part of the URL. The text should be short"
+  },
+  "titleRuleSearch": {
+    "message": "When comparing URLs the parts matching the regular expression will be replaced by the subsequent text.", // new
+    "description": "Explain that the corresponding parts of the URL will be replaced for comparison"
+  },
+  "ruleReplace": {
+    "message": "by", // new
+    "description": "Input field for the replacement text for the regular expression matches. The text should be short"
+  },
+  "titleRuleReplace": {
+    "message": "The replacement text for the regular expression matches. Symbols like $$& or $$1 can be used to refer to the match or a brace content. The special texts \\L$$& and \\U$$& mean a lower and upper case version of the matches, respectively. The special texts $$URL, $$NAME, and $$TITLE mean the original (unmodified) URL and the bookmark full name/title (with/without path), respectively. The latter three can be preceded or followed by $$& to prepend or append the original match", // new
+    "description": "Explain that the text will be used as replacement text for the regular expression matches"
+  },
+  "buttonRuleUp": {
+    "message": "\u21E7", // new
+    "description": "Button for moving a rule up. The text should be short"
+  },
+  "buttonRuleUpFontWeight": {
+    "message": "bolder", // new (keep unless buttonRuleUp is changed)
+    "description": "font-weight property for buttonRuleUp"
+  },
+  "titleButtonRuleUp": {
+    "message": "\u21E7", // new (until it is translated the symbol is perhaps better than English)
+//  "message": "The rule will be moved up.",
+    "description": "Explain that the rule will be moved up"
+  },
+  "buttonRuleDown": {
+    "message": "\u21E9", // new
+    "description": "Button for moving a rule down. The text should be short"
+  },
+  "buttonRuleDownFontWeight": {
+    "message": "bolder", // new (keep unless buttonRuleDown is changed)
+    "description": "font-weight property for buttonRuleDown"
+  },
+  "titleButtonRuleDown": {
+    "message": "\u21E9", // new (until it is translated the symbol is perhaps better than English)
+//  "message": "The rule will be moved down.",
+    "description": "Explain that the rule will be moved down"
+  },
+  "buttonRuleSub": {
+    "message": "\u2716", // new
+    "description": "Button for removing a rule. The text should be short"
+  },
+  "titleButtonRuleSub": {
+    "message": "Remove this rule.", // new
+    "description": "Explain that the rule will be removed"
+  },
+  "buttonRuleAdd": {
+    "message": "\u2795", // new
+    "description": "Button for inserting a new rule. The text should be short"
+  },
+  "titleButtonRuleAdd": {
+    "message": "Insert a new rule.", // new
+    "description": "Explain that a new rule will be inserted"
+  },
+  "trashFolder": {
+    "message": "Dupes", // new
+    "description": "The name of the trash folder. Should match regExpTrashFolder"
+  },
+  "regExpTrashFolder": {
+    "message": "Dupes", // new
+    "description": "A regular expression matching trashFolder; symbols like .?\\[]()* should be quoted by \\ or surrounded by []"
+  },
+  "buttonRulesDefault": {
+    "message": "\u21D0 default rules", // new
+    "description": "Button for restoring default rules. The text should be short"
+  },
+  "titleButtonRulesDefault": {
+    "message": "Replace the currently displayed rules by default rules.", // new
+    "description": "Explain that current rules will be replaced by default rules"
+  },
+  "buttonRulesStoreLocal": {
+    "message": "\u21D2 local storage", // new
+    "description": "Button for putting rules to local storage. The text should be short"
+  },
+  "titleButtonRulesStoreLocal": {
+    "message": "Put the current rules to the browser's local storage area, possibly replacing earlier stored rules.", // new
+    "description": "Explain that current rules will replace those in the browser's local storage area"
+  },
+  "buttonRulesRestoreLocal": {
+    "message": "\u21D0 local storage", // new
+    "description": "Button for restoring rules from local storage. The text should be short"
+  },
+  "titleButtonRulesRestoreLocal": {
+    "message": "Replace the currently displayed rules by those from the browser's local storage area.", // new
+    "description": "Explain that current rules will be replaced by those from the browser's local storage area"
+  },
+  "buttonRulesCleanLocal": {
+    "message": "\u2716 local storage", // new
+    "description": "Button for cleaning local storage. The text should be short"
+  },
+  "titleButtonRulesCleanLocal": {
+    "message": "The browser's local storage area will be cleaned from stored rules. The stored rules will be lost.", // new
+    "description": "Explain that the browser's local storage area will be cleaned from stored rules"
+  },
+  "buttonRulesStoreSync": {
+    "message": "\u21D2 sync storage", // new
+    "description": "Button for putting rules to sync storage. The text should be short"
+  },
+  "titleButtonRulesStoreSync": {
+    "message": "Put the current rules to the browser's sync storage area, possibly replacing earlier stored rules.", // new
+    "description": "Explain that current rules will replace those in the browser's sync storage area"
+  },
+  "buttonRulesRestoreSync": {
+    "message": "\u21D0 sync storage", // new
+    "description": "Button for restoring rules from sync storage. The text should be short"
+  },
+  "titleButtonRulesRestoreSync": {
+    "message": "Replace the currently displayed rules by those from the browser's sync storage area.", // new
+    "description": "Explain that current rules will be replaced by those from the browser's sync storage area"
+  },
+  "buttonRulesCleanSync": {
+    "message": "\u2716 sync storage", // new
+    "description": "Button for cleaning sync storage. The text should be short"
+  },
+  "titleButtonRulesCleanSync": {
+    "message": "The browser's sync storage area will be cleaned from stored rules. The stored rules will be lost.", // new
+    "description": "Explain that the sync browser's storage area will be cleaned from stored rules"
+  },
+  "buttonListDupes": {
+    "message": "Dupes", // new
+// changed     "Exact dupes"
+//  "message": "完全重复",
+    "description": "Button for listing dupes"
+  },
+  "titleButtonListDupes": {
+    "message": "(Re)calculate the list of bookmark dupes. Two bookmarks are considered to be dupes if their URLs coincide. In expert mode, the selected URL preprocessing (substitution) rules are applied before the URLs are compared.", // new
+    "description": "Explain that the list of bookmark dupes will be (re)calculated, and how bookmark dupes are defined"
+  },
+  "buttonListEmpty": {
+    "message": "空文件夹",
+    "description": "Button for listing empty folders"
+  },
+  "titleButtonListEmpty": {
+    "message": "(Re)calculate the list of empty folders. The result might falsely contain live bookmarks.", // new
+    "description": "Explain that the list of empty folders will be (re)calculated, and that the result might falsely contain live bookmarks"
+  },
+  "buttonListSingles": {
+    "message": "Non-Dupes", // new
+    "description": "Button for listing all non-dupe bookmarks"
+  },
+  "titleButtonListSingles": {
+    "message": "(Re)calculate the list of non-dupe bookmark. Two bookmarks are considered to be dupes if their URLs coincide. In expert mode, the selected URL preprocessing (substitution) rules are applied before the URLs are compared.", // new
+    "description": "Explain that the list of all non-dupe bookmarks will be (re)calculated, and how bookmark dupes are defined"
+  },
+  "buttonListAll": {
+    "message": "所有书签",
+    "description": "Button for listing all bookmarks"
+  },
+  "titleButtonListAll": {
+    "message": "(Re)calculate the list of all bookmarks for stripping descriptions. The list consists of those bookmarks with a nonempty URL.", // new
+    "description": "Explain that the list of all bookmarks will be (re)calculated for stripping descriptions and that it consists of those bookmarks with a nonempty URL"
+  },
+  "buttonMarkButFirst": {
+    "message": "全部选中，除了每个组中第一项",
+    "description": "Button for marking all but first"
+  },
+  "titleButtonMarkButFirst": {
+    "message": "Additionally the first bookmark in each group will be unmarked.", // new
+    "description": "Explain that additionally the first bookmark in each group will be unmarked"
+  },
+  "buttonMarkButLast": {
+    "message": "全部选中，除了每个组中最后一项",
+    "description": "Button for marking all but last"
+  },
+  "titleButtonMarkButLast": {
+    "message": "Additionally the last bookmark in each group will be unmarked.", // new
+    "description": "Explain that additionally the last bookmark in each group will be unmarked"
+  },
+  "buttonMarkButOldest": {
+    "message": "Mark all but oldest in each group", // new
+    "description": "Button for marking all but oldest"
+  },
+  "titleButtonMarkButOldest": {
+    "message": "Additionally the oldest bookmark in each group will be unmarked.", // new
+    "description": "Explain that additionally the oldest bookmark in each group will be unmarked"
+  },
+  "buttonMarkButNewest": {
+    "message": "Mark all but newest in each group", // new
+    "description": "Button for marking all but newest"
+  },
+  "titleButtonMarkButNewest": {
+    "message": "Additionally the newest bookmark in each group will be unmarked.", // new
+    "description": "Explain that additionally the newest bookmark in each group will be unmarked"
+  },
+  "buttonMarkAll": {
+    "message": "全部选中",
+    "description": "Button for marking all"
+  },
+  "titleButtonMarkAll": {
+    "message": "Mark all bookmarks.", // new
+    "description": "Explain that all bookmarks will be marked"
+  },
+  "buttonUnmarkAll": {
+    "message": "全部取消",
+    "description": "Button for unmarking all"
+  },
+  "titleButtonUnmarkAll": {
+    "message": "Unmark all bookmarks.", // new
+    "description": "Explain that all bookmarks will be unmarked"
+  },
+  "optionNonFolder": {
+    "message": "-- Select a folder to get corresponding buttons for marking --", // new
+    "description": "Name of the non-folder. It might indicate that buttons for markings appear if another name is selected."
+  },
+  "optionSameFolder": {
+    "message": "-- Identical folders in the same group --", // new
+    "description": "Name of a special folder selection: Identical folders in the same group"
+  },
+  "titleSelectFolder": {
+    "message": "If a folder is selected corresponding buttons will appear for marking.", // new
+    "description": "Explain that selecting a folder will provide corresponding buttons for marking"
+  },
+  "buttonMarkFolder": {
+    "message": "Mark all from selected folder", // new
+    "description": "Button for marking all of the selected folder"
+  },
+  "titleButtonMarkFolder": {
+    "message": "Mark all bookmarks from the selected folder.", // new
+    "description": "Explain that all bookmarks of selected folder will be marked"
+  },
+  "buttonUnmarkFolder": {
+    "message": "Unmark all from selected folder", // new
+    "description": "Button for unmarking all of selected folder"
+  },
+  "titleButtonUnmarkFolder": {
+    "message": "Unmark all bookmarks from selected folder.", // new
+    "description": "Explain that all bookmarks of selected folder will be unmarked"
+  },
+  "buttonMarkFolderOther": {
+    "message": "In groups with selected folder mark all but these", // new
+    "description": "Button for marking all but selected folder in groups with it"
+  },
+  "titleButtonMarkFolderOther": {
+    "message": "Additionally the bookmarks from the selected folder will be unmarked.", // new
+    "description": "Explain that all bookmarks of selected folder will be unmarked"
+  },
+  "buttonMarkFolderButFirst": {
+    "message": "In groups with selected folder unmark all others or first", // new
+    "description": "Button for unmarking all but selected folder or first in groups with it"
+  },
+  "titleButtonMarkFolderButFirst": {
+    "message": "In groups with selected folder mark all bookmarks from that folder and unmark all others. If there are no others, unmark the first.", // new
+    "description": "Explain that in groups with selected folder all bookmarks from that folder will be marked and all others unmarked; if there are no others, the first is unmarked"
+  },
+  "buttonMarkFolderButLast": {
+    "message": "In groups with selected folder unmark all others or last", // new
+    "description": "Button for unmarking all but selected folder or last in groups with it"
+  },
+  "titleButtonMarkFolderButLast": {
+    "message": "In groups with selected folder mark all bookmarks from that folder and unmark all others. If there are no others, unmark the last.", // new
+    "description": "Explain that in groups with selected folder all bookmarks from that folder will be marked and all others unmarked; if there are no others, the last is unmarked"
+  },
+  "buttonMarkFolderButOldest": {
+    "message": "In groups with selected folder unmark all others or oldest", // new
+    "description": "Button for unmarking all but selected folder or oldest in groups with it"
+  },
+  "titleButtonMarkFolderButOldest": {
+    "message": "In groups with selected folder mark all bookmarks from that folder and unmark all others. If there are no others, unmark the oldest.", // new
+    "description": "Explain that in groups with selected folder all bookmarks from that folder will be marked and all others unmarked; if there are no others, the oldest is unmarked"
+  },
+  "buttonMarkFolderButNewest": {
+    "message": "In groups with selected folder unmark all others or newest", // new
+    "description": "Button for unmarking all but selected folder or newest in groups with it"
+  },
+  "titleButtonMarkFolderButNewest": {
+    "message": "In groups with selected folder mark all bookmarks from that folder and unmark all others. If there are no others, unmark the newest.", // new
+    "description": "Explain that in groups with selected folder all bookmarks from that folder will be marked and all others unmarked; if there are no others, the newest is unmarked"
+  },
+  "buttonMarkSame": {
+    "message": "Mark all identical folders in same group", // new
+    "description": "Button for marking all of the same folders in the same group"
+  },
+  "titleButtonMarkSame": {
+    "message": "Mark all bookmarks from identical folders in the same group.", // new
+    "description": "Explain that all bookmarks of identical folders in the same group will be marked"
+  },
+  "buttonUnmarkSame": {
+    "message": "Unmark all identical folders in same group", // new
+    "description": "Button for unmarking all of the same folders in the same group"
+  },
+  "titleButtonUnmarkSame": {
+    "message": "Unmark all bookmarks from identical folders in the same group.", // new
+    "description": "Explain that all bookmarks of identical folders in the same group will be unmarked"
+  },
+  "buttonMarkSameButFirst": {
+    "message": "Mark all but first of identical folders in same group", // new
+    "description": "Button for marking all but the first of identical folders in the same group"
+  },
+  "titleButtonMarkSameButFirst": {
+    "message": "Additionally the first of identical folders in the same group will be unmarked.", // new
+    "description": "Explain that additionally for identical folders in the same group the first will be unmarked"
+  },
+  "buttonMarkSameButLast": {
+    "message": "Mark all but last of identical folders in same group", // new
+    "description": "Button for marking all but the last of identical folders in the same group"
+  },
+  "titleButtonMarkSameButLast": {
+    "message": "Additionally the last of identical folders in the same group will be unmarked.", // new
+    "description": "Explain that additionally for identical folders in the same group the last will be unmarked"
+  },
+  "buttonMarkSameButOldest": {
+    "message": "Mark all but oldest of identical folders in same group", // new
+    "description": "Button for marking all but the oldest of identical folders in the same group"
+  },
+  "titleButtonMarkSameButOldest": {
+    "message": "Additionally the oldest of identical folders in the same group will be unmarked.", // new
+    "description": "Explain that additionally for identical folders in the same group the oldest will be unmarked"
+  },
+  "buttonMarkSameButNewest": {
+    "message": "Mark all but newest of identical folders in same group", // new
+    "description": "Button for marking all but the newest of identical folders in the same group"
+  },
+  "titleButtonMarkSameButNewest": {
+    "message": "Additionally the newest of identical folders in the same group will be unmarked.", // new
+    "description": "Explain that additionally for identical folders in the same group the newest will be unmarked"
+  },
+  "warningRemoveMarked": {
+    "message": "\u26A0", // new
+    "description": "Text in front of button for removing marked bookmarks"
+  },
+  "buttonRemoveMarked": {
+    "message": "移除选中的书签",
+    "description": "Button for removing marked bookmarks"
+  },
+  "titleButtonRemoveMarked": {
+    "message": "Marked bookmarks refer to those since you last pressed the button to calculate the list.", // new
+    "description": "Explain that bookmarks refer to those of last update of the list"
+  },
+  "buttonMoveMarked": {
+    "message": "Move marked bookmarks to “{0}”", // new
+    "description": "Button for moving marked bookmarks to trash folder. The trash folder name in the text should be {0}"
+  },
+  "warningStripMarked": {
+    "message": "\u26A0", // new
+    "description": "Text in front of button for stripping descriptions of marked bookmarks"
+  },
+  "buttonStripMarked": {
+    "message": "剥离选中书签的描述",
+    "description": "Button for stripping descriptions of marked bookmarks"
+  },
+  "titleButtonStripMarked": {
+    "message": "Stripping of descriptions will update the internal bookmark generation date. Moreover, it will move the bookmark to the location where it was since you last pressed the button to calculate this list.", // new
+    "description": "Explain the side effects that stripping updates the date of bookmarks and moves them to the location of the last calculation of the list"
+  },
+  "buttonStopRemoving": {
+    "message": "停止移除！",
+    "description": "Button for emergency stop of bookmark removing"
+  },
+  "buttonStopMoving": {
+    "message": "Stop moving!", // new
+    "description": "Button for emergency stop of bookmark moving"
+  },
+  "buttonStopStripping": {
+    "message": "停止剥离！",
+    "description": "Button for emergency stop of description stripping"
+  },
+  "checkboxFullUrl": {
+    "message": "Display URL in listing. In any case the URL will appear if you hover over the bookmark.", // new
+    "description": "Checkbox for displaying URL in listing. Explain that the URL will appear as title anyway"
+  },
+  "checkboxExtra": {
+    "message": "Display replaced URL content in listing", // new
+    "description": "Checkbox for displaying the replaced URL content in listing"
+  },
+  "messageCount": {
+    "message": "$TOTAL$ bookmarks marked", // new
+    "description": "Report specified number of marked bookmarks",
+    "placeholders": {
+      "total": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
+  },
+  "messageNoCount": {
+    "message": "Number of marked bookmarks not displayed for speed reasons", // new
+    "description": "Report that marks are not counted for speed reasons"
+  },
+  "messageMatches": {
+    "message": "$TOTAL$ (of $ALL$) dupes in $GROUPS$ groups", // new
+// changed     "$TOTAL$ (of $ALL$) exact dupes in $GROUPS$ groups"
+//  "message": "$TOTAL$ / $ALL$ 个完全重复，共 $GROUPS$ 组",
+    "description": "Report specified numbers of matches and groups of all",
+    "placeholders": {
+      "total": {
+        "content": "$1",
+        "example": "2"
+      },
+      "groups": {
+        "content": "$2",
+        "example": "1"
+      },
+      "all": {
+        "content": "$3",
+        "example": "1"
+      }
+    }
+  },
+  "titleMessageMatches": {
+    "message": "Two bookmarks are considered to be dupes if their URLs coincide. In expert mode, the selected URL preprocessing (substitution) rules are applied before the URLs are compared.", // new
+    "description": "Explain how bookmark dupes are defined"
+  },
+  "messageEmpty": {
+    "message": "找到 $TOTAL$ 个空文件夹",
+    "description": "Report specified number of empty folders",
+    "placeholders": {
+      "total": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
+  },
+  "titleMessageEmpty": {
+    "message": "The list might falsely contain live bookmarks.", // new
+    "description": "Explain that the list might falsely contain live bookmarks"
+  },
+  "messageSingles": {
+    "message": "$TOTAL$ (of $ALL$) non-dupe bookmarks found", // new
+    "description": "Report specified number of non-dupe bookmarks",
+    "placeholders": {
+      "total": {
+        "content": "$1",
+        "example": "0"
+      },
+      "all": {
+        "content": "$2",
+        "example": "1"
+      }
+    }
+  },
+  "titleMessageSingles": {
+    "message": "List of non-dupe bookmarks", // new
+    "description": "Explain that list of non-dupe bookmarks is shown"
+  },
+  "messageAll": {
+    "message": "找到 $TOTAL$ 个书签",
+    "description": "Report specified number of bookmarks",
+    "placeholders": {
+      "total": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
+  },
+  "titleMessageAll": {
+    "message": "The list consists of those bookmarks with a nonempty URL.", // new
+    "description": "Explain that the list consists of those bookmarks with a nonempty URL"
+  },
+  "messageCalculating": {
+    "message": "正在搜索",
+    "description": "Report that calculation started"
+  },
+  "messageCalculateError": {
+    "message": "错误：$ERROR$",
+    "description": "Report specified error during calculation",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "error description" // new
+      }
+    }
+  },
+  "messageRemoveMarked": {
+    "message": "正在移除选中的书签",
+    "description": "Report that removal of marked bookmarks started"
+  },
+  "messageRemoveProgress": {
+    "message": "($PERCENTAGE$%) $TOTAL$ / $TODO$ 个书签已移除",
+    "description": "Report that specified number/total/percentage of bookmarks are removed",
+    "placeholders": {
+      "total": {
+        "content": "$1",
+        "example": "0"
+      },
+      "todo": {
+        "content": "$2",
+        "example": "1"
+      },
+      "percentage": {
+        "content": "$3",
+        "example": "0"
+      }
+    }
+  },
+  "messageRemoveSuccess": {
+    "message": "$TOTAL$ 个书签已移除！",
+    "description": "Report success when removing specified number of bookmarks",
+    "placeholders": {
+      "total": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
+  },
+  "messageRemoveError": {
+    "message": "移除 $TOTAL$ 个书签时出错：$ERROR$",
+    "description": "Report specified error after removing specified number of bookmarks",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "error description" // new
+      },
+      "total": {
+        "content": "$2",
+        "example": "0"
+      }
+    }
+  },
+  "messageMoveMarked": {
+    "message": "Moving marked bookmarks", // new
+    "description": "Report that moving of marked bookmarks started"
+  },
+  "messageMoveProgress": {
+    "message": "($PERCENTAGE$ %) $TOTAL$ of $TODO$ bookmarks moved", // new
+    "description": "Report that specified number/total/percentage of bookmarks are moved",
+    "placeholders": {
+      "total": {
+        "content": "$1",
+        "example": "0"
+      },
+      "todo": {
+        "content": "$2",
+        "example": "1"
+      },
+      "percentage": {
+        "content": "$3",
+        "example": "0"
+      }
+    }
+  },
+  "messageMoveSuccess": {
+    "message": "$TOTAL$ bookmarks moved!", // new
+    "description": "Report success when moving specified number of bookmarks",
+    "placeholders": {
+      "total": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
+  },
+  "messageMoveError": {
+    "message": "Error after moving $TOTAL$ bookmarks: $ERROR$", // new
+    "description": "Report specified error after moving specified number of bookmarks",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "error description" // new
+      },
+      "total": {
+        "content": "$2",
+        "example": "0"
+      }
+    }
+  },
+  "errorNoBookmarkFolderFound": {
+    "message": "No bookmark folder found", // new
+    "description": "Report that no bookmark folder was found"
+  },
+  "messageStripMarked": {
+    "message": "剥离已选中书签的描述",
+    "description": "Report that description stripping started"
+  },
+  "messageStripProgress": {
+    "message": "($PERCENTAGE$%) $TOTAL$ / $TODO$ 个描述已剥离",
+    "description": "Report that specified number/total/percentage of descriptions are stripped",
+    "placeholders": {
+      "total": {
+        "content": "$1",
+        "example": "0"
+      },
+      "todo": {
+        "content": "$2",
+        "example": "1"
+      },
+      "percentage": {
+        "content": "$3",
+        "example": "0"
+      }
+    }
+  },
+  "messageStripSuccess": {
+    "message": "$TOTAL$ 描述已剥离！",
+    "description": "Report success when stripping specified number of descriptions",
+    "placeholders": {
+      "total": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
+  },
+  "messageStripError": {
+    "message": "剥离 $TOTAL$ 个描述时出错：$ERROR$",
+    "description": "Report specified error after stripping specified number of descriptions",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "error description" // new
+      },
+      "total": {
+        "content": "$2",
+        "example": "0"
+      }
+    }
+  }
+}

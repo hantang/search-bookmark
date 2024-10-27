@@ -38,6 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
     chrome.tabs.create({ url: "pintree.html" });
   });
 
+  document.getElementById("dupesBookmarksButton").addEventListener("click", () => {
+    chrome.tabs.create({ url: "dupes.html" });
+  });
+
   // export html2json
   document.getElementById("exportBookmarksButton").addEventListener("click", () => {
     chrome.bookmarks.getTree((bookmarks) => {

@@ -6,6 +6,7 @@
   "short_name": "bookmark-search",
   "author": "hantang",
   "homepage_url": "https://github.com/hantang/search-bookmark/",
+  "default_locale": "en",
   "action": {
     "default_popup": "popup.html"
   },
@@ -18,7 +19,10 @@
     }
   },
   "optional_host_permissions": ["*://*/*"],
-  "permissions": ["activeTab", "bookmarks", "history", "favicon"],
+  "permissions": ["activeTab", "bookmarks", "history", "favicon", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
   "icons": {
     "16": "assets/icons/icon-16x16.png",
     "48": "assets/icons/icon-48x48.png",
