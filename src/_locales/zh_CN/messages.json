@@ -1,459 +1,455 @@
 {
   "extensionName": {
-    "message": "Bookmark Dupes",
-    "description": "Name of the extension"
+    "message": "书签去重",
+    "description": "扩展名"
   },
   "extensionDescription": {
     "message": "显示/移除重复的书签、空文件夹或描述",
-    "description": "Description of the extension"
+    "description": "扩展描述"
   },
   "errorNoBookmarks": {
-    "message": "This browser version is lacking the required bookmarks API. Bookmark Dupes and similar extensions cannot work without that API. Sorry.", // new
-    "description": "Report that the extension will not work on that browser"
+    "message": "此浏览器版本缺少所需的书签 API。书签去重和类似的扩展无法在没有该 API 的情况下工作。抱歉。",
+    "description": "报告该扩展在该浏览器上无法工作"
   },
   "warningExpertStrong": {
-    "message": "\u26A0\u00A0", // new
-    "description": "First part of warning to enable expert mode: strong"
+    "message": "\u26A0\u00A0",
+    "description": "启用专家模式的警告第一部分：强"
   },
   "warningExpertText": {
-    "message": "Do not enable expert mode unless you fully understand the consequences!", // new
-    "description": "Second part of warning to enable expert mode: normal"
+    "message": "除非您完全理解后果，否则请勿启用专家模式！",
+    "description": "启用专家模式的警告第二部分：正常"
   },
   "checkboxRules": {
-    "message": "Expert mode: use customized rules to match similar bookmarks or to ignore bookmarks when searching.", // new
-    "description": "Checkbox text for switching on/off regexp rules"
+    "message": "专家模式：使用自定义规则匹配相似书签或在搜索时忽略书签。",
+    "description": "用于切换正则规则的复选框文本"
   },
   "titleCheckboxRules": {
-    "message": "With this option bookmarks can be ignored or similar bookmarks can be found. The details are specified in terms of regular expressions.", // new
-    "description": "Explain what regular expressions are used for"
+    "message": "通过此选项，可以忽略书签或找到相似书签。具体细节以正则表达式形式说明。",
+    "description": "解释正则表达式的用途"
   },
   "radioFilter": {
-    "message": "Filter", // new
-    "description": "Radio button for filtering a bookmark. The text should be short"
+    "message": "过滤",
+    "description": "用于过滤书签的单选按钮。文本应简短"
   },
   "titleRadioFilter": {
-    "message": "Bookmarks matching the criteria will be ignored.", // new
-    "description": "Explain that by choosing that button the corresponding bookmark will be ignored"
+    "message": "匹配条件的书签将被忽略。",
+    "description": "解释选择该按钮将忽略相应书签"
   },
   "radioUrl": {
-    "message": "Modify", // new
-    "description": "Radio button for preprocessing a URL. The text should be short"
+    "message": "修改",
+    "description": "用于预处理 URL 的单选按钮。文本应简短"
   },
   "titleRadioUrl": {
-    "message": "Before checking URLs to find bookmark dupes, the URL of matching bookmarks will be preprocessed according to the specified rule.", // new
-    "description": "Explain that by choosing that button the url of matching bookmarks will be preprocessed"
+    "message": "在检查 URL 以查找书签重复项之前，将根据指定规则预处理匹配书签的 URL。",
+    "description": "解释选择该按钮将预处理匹配书签的 URL"
   },
   "radioOff": {
-    "message": "Off", // new
-    "description": "Radio button for ignoring the rule. The text should be short"
+    "message": "关闭",
+    "description": "用于忽略规则的单选按钮。文本应简短"
   },
   "titleRadioOff": {
-    "message": "This rule has no effect.", // new
-    "description": "Explain that by choosing that button the rule has no effect"
+    "message": "此规则无效。",
+    "description": "解释选择该按钮将使规则无效"
   },
   "ruleName": {
-    "message": "Name matches", // new
-    "description": "Input field for matching the name. The text should be short"
+    "message": "名称匹配",
+    "description": "用于匹配名称的输入字段。文本应简短"
   },
   "titleRuleName": {
-    "message": "The rule applies to a bookmark if the bookmark path (folders + name) matches the regular expression. The separator for folders is \\0 or \\x00.", // new
-    "description": "Explain that bookmarks whose name matches the regular expression will be selected and that folders names are separated by \\0 or \\x00"
+    "message": "如果书签路径（文件夹 + 名称）匹配正则表达式，则该规则适用于该书签。文件夹的分隔符为 \\0 或 \\x00。",
+    "description": "解释名称匹配正则表达式的书签将被选中，文件夹名称以 \\0 或 \\x00 分隔"
   },
   "ruleNameNegation": {
-    "message": "Name does not match", // new
-    "description": "Input field for not matching the name. The text should be short"
+    "message": "名称不匹配",
+    "description": "用于不匹配名称的输入字段。文本应简短"
   },
   "titleRuleNameNegation": {
-    "message": "The rule applies to a bookmark if the bookmark path (folders + name) does not match the regular expression. The separator for folders is \\0 or \\x00.", // new
-    "description": "Explain that bookmarks whose names does not match the regular expression will be selected and that folders names are separated by \\0 or \\x00"
+    "message": "如果书签路径（文件夹 + 名称）不匹配正则表达式，则该规则适用于该书签。文件夹的分隔符为 \\0 或 \\x00。",
+    "description": "解释名称不匹配正则表达式的书签将被选中，文件夹名称以 \\0 或 \\x00 分隔"
   },
   "ruleUrl": {
-    "message": "URL matches", // new
-    "description": "Input field for matching the URL. The text should be short"
+    "message": "URL 匹配",
+    "description": "用于匹配 URL 的输入字段。文本应简短"
   },
   "titleRuleUrl": {
-    "message": "The rule applies to a bookmark if its URL matches the regular expression.", // new
-    "description": "Explain that bookmarks whose URL matches the regular expression will be selected"
+    "message": "如果书签的 URL 匹配正则表达式，则该规则适用于该书签。",
+    "description": "解释 URL 匹配正则表达式的书签将被选中"
   },
   "ruleUrlNegation": {
-    "message": "URL does not match", // new
-    "description": "Input field for matching the URL. The text should be short"
+    "message": "URL 不匹配",
+    "description": "用于不匹配 URL 的输入字段。文本应简短"
   },
   "titleRuleUrlNegation": {
-    "message": "The rule applies to a bookmark if its URL does not match the regular expression.", // new
-    "description": "Explain that bookmarks whose URL does not match the regular expression will be selected"
+    "message": "如果书签的 URL 不匹配正则表达式，则该规则适用于该书签。",
+    "description": "解释 URL 不匹配正则表达式的书签将被选中"
   },
   "ruleSearch": {
-    "message": "Replace URL matches", // new
-    "description": "Input field for the search part of the URL. The text should be short"
+    "message": "替换 URL 匹配",
+    "description": "用于 URL 的搜索部分的输入字段。文本应简短"
   },
   "titleRuleSearch": {
-    "message": "When comparing URLs the parts matching the regular expression will be replaced by the subsequent text.", // new
-    "description": "Explain that the corresponding parts of the URL will be replaced for comparison"
+    "message": "在比较 URL 时，匹配正则表达式的部分将被后续文本替换。",
+    "description": "解释对应的 URL 部分将被替换以进行比较"
   },
   "ruleReplace": {
-    "message": "by", // new
-    "description": "Input field for the replacement text for the regular expression matches. The text should be short"
+    "message": "由",
+    "description": "用于正则表达式匹配的替换文本的输入字段。文本应简短"
   },
   "titleRuleReplace": {
-    "message": "The replacement text for the regular expression matches. Symbols like $$& or $$1 can be used to refer to the match or a brace content. The special texts \\L$$& and \\U$$& mean a lower and upper case version of the matches, respectively. The special texts $$URL, $$NAME, and $$TITLE mean the original (unmodified) URL and the bookmark full name/title (with/without path), respectively. The latter three can be preceded or followed by $$& to prepend or append the original match", // new
-    "description": "Explain that the text will be used as replacement text for the regular expression matches"
+    "message": "正则表达式匹配的替换文本。可以使用像 $$& 或 $$1 的符号来引用匹配或括号内容。特殊文本 \\L$$& 和 \\U$$& 分别表示匹配项的小写和大写版本。特殊文本 $$URL、$$NAME 和 $$TITLE 分别表示原始（未修改）URL 和书签的全名/标题（带/不带路径）。后三者可以在前面或后面加上 $$& 以附加或添加原始匹配。",
+    "description": "解释该文本将用作正则表达式匹配的替换文本"
   },
   "buttonRuleUp": {
-    "message": "\u21E7", // new
-    "description": "Button for moving a rule up. The text should be short"
+    "message": "\u21E7",
+    "description": "用于向上移动规则的按钮。文本应简短"
   },
   "buttonRuleUpFontWeight": {
-    "message": "bolder", // new (keep unless buttonRuleUp is changed)
-    "description": "font-weight property for buttonRuleUp"
+    "message": "更粗",
+    "description": "buttonRuleUp 的字体粗细属性"
   },
   "titleButtonRuleUp": {
-    "message": "\u21E7", // new (until it is translated the symbol is perhaps better than English)
-//  "message": "The rule will be moved up.",
-    "description": "Explain that the rule will be moved up"
+    "message": "\u21E7",
+    "description": "解释规则将向上移动"
   },
   "buttonRuleDown": {
-    "message": "\u21E9", // new
-    "description": "Button for moving a rule down. The text should be short"
+    "message": "\u21E9",
+    "description": "用于向下移动规则的按钮。文本应简短"
   },
   "buttonRuleDownFontWeight": {
-    "message": "bolder", // new (keep unless buttonRuleDown is changed)
-    "description": "font-weight property for buttonRuleDown"
+    "message": "更粗",
+    "description": "buttonRuleDown 的字体粗细属性"
   },
   "titleButtonRuleDown": {
-    "message": "\u21E9", // new (until it is translated the symbol is perhaps better than English)
-//  "message": "The rule will be moved down.",
-    "description": "Explain that the rule will be moved down"
+    "message": "\u21E9",
+    "description": "解释规则将向下移动"
   },
   "buttonRuleSub": {
-    "message": "\u2716", // new
-    "description": "Button for removing a rule. The text should be short"
+    "message": "\u2716",
+    "description": "用于移除规则的按钮。文本应简短"
   },
   "titleButtonRuleSub": {
-    "message": "Remove this rule.", // new
-    "description": "Explain that the rule will be removed"
+    "message": "移除此规则。",
+    "description": "解释规则将被移除"
   },
   "buttonRuleAdd": {
-    "message": "\u2795", // new
-    "description": "Button for inserting a new rule. The text should be short"
+    "message": "\u2795",
+    "description": "用于插入新规则的按钮。文本应简短"
   },
   "titleButtonRuleAdd": {
-    "message": "Insert a new rule.", // new
-    "description": "Explain that a new rule will be inserted"
+    "message": "插入新规则。",
+    "description": "解释将插入新规则"
   },
   "trashFolder": {
-    "message": "Dupes", // new
-    "description": "The name of the trash folder. Should match regExpTrashFolder"
+    "message": "重复项",
+    "description": "垃圾箱文件夹的名称。应与 regExpTrashFolder 匹配"
   },
   "regExpTrashFolder": {
-    "message": "Dupes", // new
-    "description": "A regular expression matching trashFolder; symbols like .?\\[]()* should be quoted by \\ or surrounded by []"
+    "message": "重复项",
+    "description": "匹配垃圾箱文件夹的正则表达式；像 .?\\[]()* 这样的符号应被 \\ 转义或用 [] 包围"
   },
   "buttonRulesDefault": {
-    "message": "\u21D0 default rules", // new
-    "description": "Button for restoring default rules. The text should be short"
+    "message": "\u21D0 默认规则",
+    "description": "用于恢复默认规则的按钮。文本应简短"
   },
   "titleButtonRulesDefault": {
-    "message": "Replace the currently displayed rules by default rules.", // new
-    "description": "Explain that current rules will be replaced by default rules"
+    "message": "将当前显示的规则替换为默认规则。",
+    "description": "解释当前规则将被默认规则替换"
   },
   "buttonRulesStoreLocal": {
-    "message": "\u21D2 local storage", // new
-    "description": "Button for putting rules to local storage. The text should be short"
+    "message": "\u21D2 本地存储",
+    "description": "用于将规则存储到本地存储的按钮。文本应简短"
   },
   "titleButtonRulesStoreLocal": {
-    "message": "Put the current rules to the browser's local storage area, possibly replacing earlier stored rules.", // new
-    "description": "Explain that current rules will replace those in the browser's local storage area"
+    "message": "将当前规则放入浏览器的本地存储区域，可能会替换之前存储的规则。",
+    "description": "解释当前规则将替换浏览器本地存储区域中的规则"
   },
   "buttonRulesRestoreLocal": {
-    "message": "\u21D0 local storage", // new
-    "description": "Button for restoring rules from local storage. The text should be short"
+    "message": "\u21D0 本地存储",
+    "description": "用于从本地存储恢复规则的按钮。文本应简短"
   },
   "titleButtonRulesRestoreLocal": {
-    "message": "Replace the currently displayed rules by those from the browser's local storage area.", // new
-    "description": "Explain that current rules will be replaced by those from the browser's local storage area"
+    "message": "用浏览器本地存储区域中的规则替换当前显示的规则。",
+    "description": "解释当前规则将被浏览器本地存储区域中的规则替换"
   },
   "buttonRulesCleanLocal": {
-    "message": "\u2716 local storage", // new
-    "description": "Button for cleaning local storage. The text should be short"
+    "message": "\u2716 本地存储",
+    "description": "用于清理本地存储的按钮。文本应简短"
   },
   "titleButtonRulesCleanLocal": {
-    "message": "The browser's local storage area will be cleaned from stored rules. The stored rules will be lost.", // new
-    "description": "Explain that the browser's local storage area will be cleaned from stored rules"
+    "message": "浏览器的本地存储区域将从存储的规则中清理。存储的规则将会丢失。",
+    "description": "解释浏览器的本地存储区域将被清理，存储的规则将丢失"
   },
   "buttonRulesStoreSync": {
-    "message": "\u21D2 sync storage", // new
-    "description": "Button for putting rules to sync storage. The text should be short"
+    "message": "\u21D2 同步存储",
+    "description": "用于将规则存储到同步存储的按钮。文本应简短"
   },
   "titleButtonRulesStoreSync": {
-    "message": "Put the current rules to the browser's sync storage area, possibly replacing earlier stored rules.", // new
-    "description": "Explain that current rules will replace those in the browser's sync storage area"
+    "message": "将当前规则放入浏览器的同步存储区域，可能会替换之前存储的规则。",
+    "description": "解释当前规则将替换浏览器同步存储区域中的规则"
   },
   "buttonRulesRestoreSync": {
-    "message": "\u21D0 sync storage", // new
-    "description": "Button for restoring rules from sync storage. The text should be short"
+    "message": "\u21D0 同步存储",
+    "description": "用于从同步存储恢复规则的按钮。文本应简短"
   },
   "titleButtonRulesRestoreSync": {
-    "message": "Replace the currently displayed rules by those from the browser's sync storage area.", // new
-    "description": "Explain that current rules will be replaced by those from the browser's sync storage area"
+    "message": "用浏览器同步存储区域中的规则替换当前显示的规则。",
+    "description": "解释当前规则将被浏览器同步存储区域中的规则替换"
   },
   "buttonRulesCleanSync": {
-    "message": "\u2716 sync storage", // new
-    "description": "Button for cleaning sync storage. The text should be short"
+    "message": "\u2716 同步存储",
+    "description": "用于清理同步存储的按钮。文本应简短"
   },
   "titleButtonRulesCleanSync": {
-    "message": "The browser's sync storage area will be cleaned from stored rules. The stored rules will be lost.", // new
-    "description": "Explain that the sync browser's storage area will be cleaned from stored rules"
+    "message": "浏览器的同步存储区域将从存储的规则中清理。存储的规则将会丢失。",
+    "description": "解释浏览器的同步存储区域将被清理，存储的规则将丢失"
   },
   "buttonListDupes": {
-    "message": "Dupes", // new
-// changed     "Exact dupes"
-//  "message": "完全重复",
-    "description": "Button for listing dupes"
+    "message": "重复项",
+    "description": "用于列出重复项的按钮"
   },
   "titleButtonListDupes": {
-    "message": "(Re)calculate the list of bookmark dupes. Two bookmarks are considered to be dupes if their URLs coincide. In expert mode, the selected URL preprocessing (substitution) rules are applied before the URLs are compared.", // new
-    "description": "Explain that the list of bookmark dupes will be (re)calculated, and how bookmark dupes are defined"
+    "message": "(重新)计算书签重复项的列表。如果两个书签的 URL 相同，则被认为是重复项。在专家模式下，选择的 URL 预处理（替换）规则将在比较 URL 之前应用。",
+    "description": "解释书签重复项的列表将被 (重新) 计算，以及书签重复项的定义"
   },
   "buttonListEmpty": {
     "message": "空文件夹",
-    "description": "Button for listing empty folders"
+    "description": "用于列出空文件夹的按钮"
   },
   "titleButtonListEmpty": {
-    "message": "(Re)calculate the list of empty folders. The result might falsely contain live bookmarks.", // new
-    "description": "Explain that the list of empty folders will be (re)calculated, and that the result might falsely contain live bookmarks"
+    "message": "(重新)计算空文件夹的列表。结果可能错误地包含活动书签。",
+    "description": "解释空文件夹的列表将被 (重新) 计算，结果可能错误地包含活动书签"
   },
   "buttonListSingles": {
-    "message": "Non-Dupes", // new
-    "description": "Button for listing all non-dupe bookmarks"
+    "message": "非重复项",
+    "description": "用于列出所有非重复书签的按钮"
   },
   "titleButtonListSingles": {
-    "message": "(Re)calculate the list of non-dupe bookmark. Two bookmarks are considered to be dupes if their URLs coincide. In expert mode, the selected URL preprocessing (substitution) rules are applied before the URLs are compared.", // new
-    "description": "Explain that the list of all non-dupe bookmarks will be (re)calculated, and how bookmark dupes are defined"
+    "message": "(重新)计算非重复书签的列表。如果两个书签的 URL 相同，则被认为是重复项。在专家模式下，选择的 URL 预处理（替换）规则将在比较 URL 之前应用。",
+    "description": "解释所有非重复书签的列表将被 (重新) 计算，以及书签重复项的定义"
   },
   "buttonListAll": {
     "message": "所有书签",
-    "description": "Button for listing all bookmarks"
+    "description": "用于列出所有书签的按钮"
   },
   "titleButtonListAll": {
-    "message": "(Re)calculate the list of all bookmarks for stripping descriptions. The list consists of those bookmarks with a nonempty URL.", // new
-    "description": "Explain that the list of all bookmarks will be (re)calculated for stripping descriptions and that it consists of those bookmarks with a nonempty URL"
+    "message": "(重新)计算所有书签的列表以去除描述。该列表由那些具有非空 URL 的书签组成。",
+    "description": "解释所有书签的列表将被 (重新) 计算以去除描述，并且它由那些具有非空 URL 的书签组成"
   },
   "buttonMarkButFirst": {
     "message": "全部选中，除了每个组中第一项",
-    "description": "Button for marking all but first"
+    "description": "用于标记除了第一项之外的所有项的按钮"
   },
   "titleButtonMarkButFirst": {
-    "message": "Additionally the first bookmark in each group will be unmarked.", // new
-    "description": "Explain that additionally the first bookmark in each group will be unmarked"
+    "message": "此外，每个组中的第一个书签将被取消标记。",
+    "description": "解释此外每个组中的第一个书签将被取消标记"
   },
   "buttonMarkButLast": {
     "message": "全部选中，除了每个组中最后一项",
-    "description": "Button for marking all but last"
+    "description": "用于标记除了最后一项之外的所有项的按钮"
   },
   "titleButtonMarkButLast": {
-    "message": "Additionally the last bookmark in each group will be unmarked.", // new
-    "description": "Explain that additionally the last bookmark in each group will be unmarked"
+    "message": "此外，每个组中的最后一个书签将被取消标记。",
+    "description": "解释此外每个组中的最后一个书签将被取消标记"
   },
   "buttonMarkButOldest": {
-    "message": "Mark all but oldest in each group", // new
-    "description": "Button for marking all but oldest"
+    "message": "标记除每组中最旧的书签外的所有书签",
+    "description": "用于标记除了最旧书签之外的所有项的按钮"
   },
   "titleButtonMarkButOldest": {
-    "message": "Additionally the oldest bookmark in each group will be unmarked.", // new
-    "description": "Explain that additionally the oldest bookmark in each group will be unmarked"
+    "message": "此外，每个组中最旧的书签将被取消标记。",
+    "description": "解释此外每个组中最旧的书签将被取消标记"
   },
   "buttonMarkButNewest": {
-    "message": "Mark all but newest in each group", // new
-    "description": "Button for marking all but newest"
+    "message": "标记除每组中最新的书签外的所有书签",
+    "description": "用于标记除了最新书签之外的所有项的按钮"
   },
   "titleButtonMarkButNewest": {
-    "message": "Additionally the newest bookmark in each group will be unmarked.", // new
-    "description": "Explain that additionally the newest bookmark in each group will be unmarked"
+    "message": "此外，每个组中最新的书签将被取消标记。",
+    "description": "解释此外每个组中最新的书签将被取消标记"
   },
   "buttonMarkAll": {
     "message": "全部选中",
-    "description": "Button for marking all"
+    "description": "用于标记所有项的按钮"
   },
   "titleButtonMarkAll": {
-    "message": "Mark all bookmarks.", // new
-    "description": "Explain that all bookmarks will be marked"
+    "message": "标记所有书签。",
+    "description": "解释将标记所有书签"
   },
   "buttonUnmarkAll": {
     "message": "全部取消",
-    "description": "Button for unmarking all"
+    "description": "用于取消标记所有项的按钮"
   },
   "titleButtonUnmarkAll": {
-    "message": "Unmark all bookmarks.", // new
-    "description": "Explain that all bookmarks will be unmarked"
+    "message": "取消标记所有书签。",
+    "description": "解释将取消标记所有书签"
   },
   "optionNonFolder": {
-    "message": "-- Select a folder to get corresponding buttons for marking --", // new
-    "description": "Name of the non-folder. It might indicate that buttons for markings appear if another name is selected."
+    "message": "-- 选择一个文件夹以获取相应的标记按钮 --",
+    "description": "非文件夹的名称。可能表示如果选择另一个名称，标记按钮将出现。"
   },
   "optionSameFolder": {
-    "message": "-- Identical folders in the same group --", // new
-    "description": "Name of a special folder selection: Identical folders in the same group"
+    "message": "-- 相同组中的相同文件夹 --",
+    "description": "特殊文件夹选择的名称：相同组中的相同文件夹"
   },
   "titleSelectFolder": {
-    "message": "If a folder is selected corresponding buttons will appear for marking.", // new
-    "description": "Explain that selecting a folder will provide corresponding buttons for marking"
+    "message": "如果选择了文件夹，相应的标记按钮将出现。",
+    "description": "解释选择文件夹后将提供相应的标记按钮"
   },
   "buttonMarkFolder": {
-    "message": "Mark all from selected folder", // new
-    "description": "Button for marking all of the selected folder"
+    "message": "标记来自选定文件夹的所有书签",
+    "description": "用于标记所选文件夹中的所有书签的按钮"
   },
   "titleButtonMarkFolder": {
-    "message": "Mark all bookmarks from the selected folder.", // new
-    "description": "Explain that all bookmarks of selected folder will be marked"
+    "message": "标记来自所选文件夹的所有书签。",
+    "description": "解释所选文件夹中的所有书签将被标记"
   },
   "buttonUnmarkFolder": {
-    "message": "Unmark all from selected folder", // new
-    "description": "Button for unmarking all of selected folder"
+    "message": "取消标记来自选定文件夹的所有书签",
+    "description": "用于取消标记所选文件夹中的所有书签的按钮"
   },
   "titleButtonUnmarkFolder": {
-    "message": "Unmark all bookmarks from selected folder.", // new
-    "description": "Explain that all bookmarks of selected folder will be unmarked"
+    "message": "取消标记来自所选文件夹的所有书签。",
+    "description": "解释所选文件夹中的所有书签将被取消标记"
   },
   "buttonMarkFolderOther": {
-    "message": "In groups with selected folder mark all but these", // new
-    "description": "Button for marking all but selected folder in groups with it"
+    "message": "在包含选定文件夹的组中，标记除该文件夹外的所有书签",
+    "description": "用于标记包含选定文件夹的组中除了该文件夹外的所有书签的按钮"
   },
   "titleButtonMarkFolderOther": {
-    "message": "Additionally the bookmarks from the selected folder will be unmarked.", // new
-    "description": "Explain that all bookmarks of selected folder will be unmarked"
+    "message": "此外，将取消标记来自所选文件夹的书签。",
+    "description": "解释所选文件夹中的书签将被取消标记"
   },
   "buttonMarkFolderButFirst": {
-    "message": "In groups with selected folder unmark all others or first", // new
-    "description": "Button for unmarking all but selected folder or first in groups with it"
+    "message": "在包含选定文件夹的组中，取消标记其他或第一个书签",
+    "description": "用于取消标记包含选定文件夹的组中的其他书签或第一个书签的按钮"
   },
   "titleButtonMarkFolderButFirst": {
-    "message": "In groups with selected folder mark all bookmarks from that folder and unmark all others. If there are no others, unmark the first.", // new
-    "description": "Explain that in groups with selected folder all bookmarks from that folder will be marked and all others unmarked; if there are no others, the first is unmarked"
+    "message": "在包含选定文件夹的组中，标记来自该文件夹的所有书签并取消标记其他书签。如果没有其他书签，将取消标记第一个。",
+    "description": "解释在包含选定文件夹的组中，将标记来自该文件夹的所有书签并取消标记其他书签；如果没有其他书签，将取消标记第一个"
   },
   "buttonMarkFolderButLast": {
-    "message": "In groups with selected folder unmark all others or last", // new
-    "description": "Button for unmarking all but selected folder or last in groups with it"
+    "message": "在包含选定文件夹的组中，取消标记其他或最后一个书签",
+    "description": "用于取消标记包含选定文件夹的组中的其他书签或最后一个书签的按钮"
   },
   "titleButtonMarkFolderButLast": {
-    "message": "In groups with selected folder mark all bookmarks from that folder and unmark all others. If there are no others, unmark the last.", // new
-    "description": "Explain that in groups with selected folder all bookmarks from that folder will be marked and all others unmarked; if there are no others, the last is unmarked"
+    "message": "在包含选定文件夹的组中，标记来自该文件夹的所有书签并取消标记其他书签。如果没有其他书签，将取消标记最后一个。",
+    "description": "解释在包含选定文件夹的组中，将标记来自该文件夹的所有书签并取消标记其他书签；如果没有其他书签，将取消标记最后一个"
   },
   "buttonMarkFolderButOldest": {
-    "message": "In groups with selected folder unmark all others or oldest", // new
-    "description": "Button for unmarking all but selected folder or oldest in groups with it"
+    "message": "在包含选定文件夹的组中，取消标记其他或最旧的书签",
+    "description": "用于取消标记包含选定文件夹的组中的其他书签或最旧的书签的按钮"
   },
   "titleButtonMarkFolderButOldest": {
-    "message": "In groups with selected folder mark all bookmarks from that folder and unmark all others. If there are no others, unmark the oldest.", // new
-    "description": "Explain that in groups with selected folder all bookmarks from that folder will be marked and all others unmarked; if there are no others, the oldest is unmarked"
+    "message": "在包含选定文件夹的组中，标记来自该文件夹的所有书签并取消标记其他书签。如果没有其他书签，将取消标记最旧的。",
+    "description": "解释在包含选定文件夹的组中，将标记来自该文件夹的所有书签并取消标记其他书签；如果没有其他书签，将取消标记最旧的"
   },
   "buttonMarkFolderButNewest": {
-    "message": "In groups with selected folder unmark all others or newest", // new
-    "description": "Button for unmarking all but selected folder or newest in groups with it"
+    "message": "在包含选定文件夹的组中，取消标记其他或最新的书签",
+    "description": "用于取消标记包含选定文件夹的组中的其他书签或最新的书签的按钮"
   },
   "titleButtonMarkFolderButNewest": {
-    "message": "In groups with selected folder mark all bookmarks from that folder and unmark all others. If there are no others, unmark the newest.", // new
-    "description": "Explain that in groups with selected folder all bookmarks from that folder will be marked and all others unmarked; if there are no others, the newest is unmarked"
+    "message": "在包含选定文件夹的组中，标记来自该文件夹的所有书签并取消标记其他书签。如果没有其他书签，将取消标记最新的。",
+    "description": "解释在包含选定文件夹的组中，将标记来自该文件夹的所有书签并取消标记其他书签；如果没有其他书签，将取消标记最新的"
   },
   "buttonMarkSame": {
-    "message": "Mark all identical folders in same group", // new
-    "description": "Button for marking all of the same folders in the same group"
+    "message": "标记同组中的所有相同文件夹",
+    "description": "用于标记同组中所有相同文件夹的按钮"
   },
   "titleButtonMarkSame": {
-    "message": "Mark all bookmarks from identical folders in the same group.", // new
-    "description": "Explain that all bookmarks of identical folders in the same group will be marked"
+    "message": "标记同组中相同文件夹的所有书签。",
+    "description": "解释同组中所有相同文件夹的书签将被标记"
   },
   "buttonUnmarkSame": {
-    "message": "Unmark all identical folders in same group", // new
-    "description": "Button for unmarking all of the same folders in the same group"
+    "message": "取消标记同组中的所有相同文件夹",
+    "description": "用于取消标记同组中所有相同文件夹的按钮"
   },
   "titleButtonUnmarkSame": {
-    "message": "Unmark all bookmarks from identical folders in the same group.", // new
-    "description": "Explain that all bookmarks of identical folders in the same group will be unmarked"
+    "message": "取消标记同组中相同文件夹的所有书签。",
+    "description": "解释同组中相同文件夹的所有书签将被取消标记"
   },
   "buttonMarkSameButFirst": {
-    "message": "Mark all but first of identical folders in same group", // new
-    "description": "Button for marking all but the first of identical folders in the same group"
+    "message": "标记同组中相同文件夹的所有书签，除了第一个",
+    "description": "用于标记同组中相同文件夹的所有书签，除了第一个"
   },
   "titleButtonMarkSameButFirst": {
-    "message": "Additionally the first of identical folders in the same group will be unmarked.", // new
-    "description": "Explain that additionally for identical folders in the same group the first will be unmarked"
+    "message": "此外，同组中的第一个相同文件夹将被取消标记。",
+    "description": "解释同组中相同文件夹的第一个将被取消标记"
   },
   "buttonMarkSameButLast": {
-    "message": "Mark all but last of identical folders in same group", // new
-    "description": "Button for marking all but the last of identical folders in the same group"
+    "message": "标记同组中相同文件夹的所有书签，除了最后一个",
+    "description": "用于标记同组中相同文件夹的所有书签，除了最后一个"
   },
   "titleButtonMarkSameButLast": {
-    "message": "Additionally the last of identical folders in the same group will be unmarked.", // new
-    "description": "Explain that additionally for identical folders in the same group the last will be unmarked"
+    "message": "此外，同组中的最后一个相同文件夹将被取消标记。",
+    "description": "解释同组中相同文件夹的最后一个将被取消标记"
   },
   "buttonMarkSameButOldest": {
-    "message": "Mark all but oldest of identical folders in same group", // new
-    "description": "Button for marking all but the oldest of identical folders in the same group"
+    "message": "标记同组中相同文件夹的所有书签，除了最旧的",
+    "description": "用于标记同组中相同文件夹的所有书签，除了最旧的"
   },
   "titleButtonMarkSameButOldest": {
-    "message": "Additionally the oldest of identical folders in the same group will be unmarked.", // new
-    "description": "Explain that additionally for identical folders in the same group the oldest will be unmarked"
+    "message": "此外，同组中最旧的相同文件夹将被取消标记。",
+    "description": "解释同组中相同文件夹的最旧将被取消标记"
   },
   "buttonMarkSameButNewest": {
-    "message": "Mark all but newest of identical folders in same group", // new
-    "description": "Button for marking all but the newest of identical folders in the same group"
+    "message": "标记同组中相同文件夹的所有书签，除了最新的",
+    "description": "用于标记同组中相同文件夹的所有书签，除了最新的"
   },
   "titleButtonMarkSameButNewest": {
-    "message": "Additionally the newest of identical folders in the same group will be unmarked.", // new
-    "description": "Explain that additionally for identical folders in the same group the newest will be unmarked"
+    "message": "此外，同组中最新的相同文件夹将被取消标记。",
+    "description": "解释同组中相同文件夹的最新将被取消标记"
   },
   "warningRemoveMarked": {
-    "message": "\u26A0", // new
-    "description": "Text in front of button for removing marked bookmarks"
+    "message": "\u26A0",
+    "description": "移除标记书签按钮前的文本"
   },
   "buttonRemoveMarked": {
     "message": "移除选中的书签",
-    "description": "Button for removing marked bookmarks"
+    "description": "用于移除标记书签的按钮"
   },
   "titleButtonRemoveMarked": {
-    "message": "Marked bookmarks refer to those since you last pressed the button to calculate the list.", // new
-    "description": "Explain that bookmarks refer to those of last update of the list"
+    "message": "标记的书签是指自上次按下计算列表按钮以来的书签。",
+    "description": "解释标记的书签是指上次更新列表时的书签"
   },
   "buttonMoveMarked": {
-    "message": "Move marked bookmarks to “{0}”", // new
-    "description": "Button for moving marked bookmarks to trash folder. The trash folder name in the text should be {0}"
+    "message": "将标记的书签移动到“{0}”",
+    "description": "用于将标记的书签移动到垃圾文件夹的按钮。垃圾文件夹名称在文本中应为 {0}"
   },
   "warningStripMarked": {
-    "message": "\u26A0", // new
-    "description": "Text in front of button for stripping descriptions of marked bookmarks"
+    "message": "\u26A0",
+    "description": "剥离标记书签描述按钮前的文本"
   },
   "buttonStripMarked": {
     "message": "剥离选中书签的描述",
-    "description": "Button for stripping descriptions of marked bookmarks"
+    "description": "用于剥离标记书签描述的按钮"
   },
   "titleButtonStripMarked": {
-    "message": "Stripping of descriptions will update the internal bookmark generation date. Moreover, it will move the bookmark to the location where it was since you last pressed the button to calculate this list.", // new
-    "description": "Explain the side effects that stripping updates the date of bookmarks and moves them to the location of the last calculation of the list"
+    "message": "剥离描述将更新内部书签生成日期。此外，它将移动书签到您上次按下计算列表按钮后的位置。",
+    "description": "解释剥离的副作用，即更新书签的日期并将其移动到最后一次计算列表的位置"
   },
   "buttonStopRemoving": {
     "message": "停止移除！",
-    "description": "Button for emergency stop of bookmark removing"
+    "description": "用于紧急停止书签移除的按钮"
   },
   "buttonStopMoving": {
-    "message": "Stop moving!", // new
-    "description": "Button for emergency stop of bookmark moving"
+    "message": "停止移动！",
+    "description": "用于紧急停止书签移动的按钮"
   },
   "buttonStopStripping": {
     "message": "停止剥离！",
-    "description": "Button for emergency stop of description stripping"
+    "description": "用于紧急停止描述剥离的按钮"
   },
   "checkboxFullUrl": {
-    "message": "Display URL in listing. In any case the URL will appear if you hover over the bookmark.", // new
-    "description": "Checkbox for displaying URL in listing. Explain that the URL will appear as title anyway"
+    "message": "在列表中显示网址。无论如何，当您将鼠标悬停在书签上时，网址将出现。",
+    "description": "用于在列表中显示网址的复选框。解释网址无论如何都会作为标题出现"
   },
   "checkboxExtra": {
-    "message": "Display replaced URL content in listing", // new
-    "description": "Checkbox for displaying the replaced URL content in listing"
+    "message": "在列表中显示替换的网址内容",
+    "description": "用于在列表中显示替换的网址内容的复选框"
   },
   "messageCount": {
-    "message": "$TOTAL$ bookmarks marked", // new
-    "description": "Report specified number of marked bookmarks",
+    "message": "$TOTAL$ 个书签已标记",
+    "description": "报告指定数量的标记书签",
     "placeholders": {
       "total": {
         "content": "$1",
@@ -462,14 +458,12 @@
     }
   },
   "messageNoCount": {
-    "message": "Number of marked bookmarks not displayed for speed reasons", // new
-    "description": "Report that marks are not counted for speed reasons"
+    "message": "由于速度原因，未显示标记书签的数量",
+    "description": "报告未计算标记书签数量是由于速度原因"
   },
   "messageMatches": {
-    "message": "$TOTAL$ (of $ALL$) dupes in $GROUPS$ groups", // new
-// changed     "$TOTAL$ (of $ALL$) exact dupes in $GROUPS$ groups"
-//  "message": "$TOTAL$ / $ALL$ 个完全重复，共 $GROUPS$ 组",
-    "description": "Report specified numbers of matches and groups of all",
+    "message": "$TOTAL$ / $ALL$ 个重复书签，共 $GROUPS$ 组",
+    "description": "报告指定数量的匹配项和所有组的数量",
     "placeholders": {
       "total": {
         "content": "$1",
@@ -486,12 +480,12 @@
     }
   },
   "titleMessageMatches": {
-    "message": "Two bookmarks are considered to be dupes if their URLs coincide. In expert mode, the selected URL preprocessing (substitution) rules are applied before the URLs are compared.", // new
-    "description": "Explain how bookmark dupes are defined"
+    "message": "如果两个书签的URL相同，则被认为是重复的。在专家模式下，选定的URL预处理（替换）规则将在比较URL之前应用。",
+    "description": "解释书签重复的定义"
   },
   "messageEmpty": {
     "message": "找到 $TOTAL$ 个空文件夹",
-    "description": "Report specified number of empty folders",
+    "description": "报告指定数量的空文件夹",
     "placeholders": {
       "total": {
         "content": "$1",
@@ -500,12 +494,12 @@
     }
   },
   "titleMessageEmpty": {
-    "message": "The list might falsely contain live bookmarks.", // new
-    "description": "Explain that the list might falsely contain live bookmarks"
+    "message": "该列表可能错误地包含实时书签。",
+    "description": "解释该列表可能错误地包含实时书签"
   },
   "messageSingles": {
-    "message": "$TOTAL$ (of $ALL$) non-dupe bookmarks found", // new
-    "description": "Report specified number of non-dupe bookmarks",
+    "message": "找到 $TOTAL$ / $ALL$ 个非重复书签",
+    "description": "报告指定数量的非重复书签",
     "placeholders": {
       "total": {
         "content": "$1",
@@ -518,12 +512,12 @@
     }
   },
   "titleMessageSingles": {
-    "message": "List of non-dupe bookmarks", // new
-    "description": "Explain that list of non-dupe bookmarks is shown"
+    "message": "非重复书签列表",
+    "description": "说明显示的是非重复书签的列表"
   },
   "messageAll": {
     "message": "找到 $TOTAL$ 个书签",
-    "description": "Report specified number of bookmarks",
+    "description": "报告指定数量的书签",
     "placeholders": {
       "total": {
         "content": "$1",
@@ -532,30 +526,30 @@
     }
   },
   "titleMessageAll": {
-    "message": "The list consists of those bookmarks with a nonempty URL.", // new
-    "description": "Explain that the list consists of those bookmarks with a nonempty URL"
+    "message": "该列表包含那些具有非空URL的书签。",
+    "description": "说明该列表包含的书签具有非空URL"
   },
   "messageCalculating": {
     "message": "正在搜索",
-    "description": "Report that calculation started"
+    "description": "报告计算已开始"
   },
   "messageCalculateError": {
     "message": "错误：$ERROR$",
-    "description": "Report specified error during calculation",
+    "description": "报告计算过程中出现的指定错误",
     "placeholders": {
       "error": {
         "content": "$1",
-        "example": "error description" // new
+        "example": "错误描述"
       }
     }
   },
   "messageRemoveMarked": {
     "message": "正在移除选中的书签",
-    "description": "Report that removal of marked bookmarks started"
+    "description": "报告标记书签的移除已开始"
   },
   "messageRemoveProgress": {
     "message": "($PERCENTAGE$%) $TOTAL$ / $TODO$ 个书签已移除",
-    "description": "Report that specified number/total/percentage of bookmarks are removed",
+    "description": "报告指定数量/总数/百分比的书签已被移除",
     "placeholders": {
       "total": {
         "content": "$1",
@@ -573,7 +567,7 @@
   },
   "messageRemoveSuccess": {
     "message": "$TOTAL$ 个书签已移除！",
-    "description": "Report success when removing specified number of bookmarks",
+    "description": "报告移除指定数量书签成功",
     "placeholders": {
       "total": {
         "content": "$1",
@@ -583,11 +577,11 @@
   },
   "messageRemoveError": {
     "message": "移除 $TOTAL$ 个书签时出错：$ERROR$",
-    "description": "Report specified error after removing specified number of bookmarks",
+    "description": "报告移除指定数量书签后出现的错误",
     "placeholders": {
       "error": {
         "content": "$1",
-        "example": "error description" // new
+        "example": "错误描述"
       },
       "total": {
         "content": "$2",
@@ -596,12 +590,12 @@
     }
   },
   "messageMoveMarked": {
-    "message": "Moving marked bookmarks", // new
-    "description": "Report that moving of marked bookmarks started"
+    "message": "正在移动标记的书签",
+    "description": "报告标记书签的移动已开始"
   },
   "messageMoveProgress": {
-    "message": "($PERCENTAGE$ %) $TOTAL$ of $TODO$ bookmarks moved", // new
-    "description": "Report that specified number/total/percentage of bookmarks are moved",
+    "message": "($PERCENTAGE$ %) $TOTAL$ 个书签已移动",
+    "description": "报告指定数量/总数/百分比的书签已被移动",
     "placeholders": {
       "total": {
         "content": "$1",
@@ -618,8 +612,8 @@
     }
   },
   "messageMoveSuccess": {
-    "message": "$TOTAL$ bookmarks moved!", // new
-    "description": "Report success when moving specified number of bookmarks",
+    "message": "$TOTAL$ 个书签已移动！",
+    "description": "报告移动指定数量书签成功",
     "placeholders": {
       "total": {
         "content": "$1",
@@ -628,12 +622,12 @@
     }
   },
   "messageMoveError": {
-    "message": "Error after moving $TOTAL$ bookmarks: $ERROR$", // new
-    "description": "Report specified error after moving specified number of bookmarks",
+    "message": "移动 $TOTAL$ 个书签时出错：$ERROR$",
+    "description": "报告移动指定数量书签后出现的错误",
     "placeholders": {
       "error": {
         "content": "$1",
-        "example": "error description" // new
+        "example": "错误描述"
       },
       "total": {
         "content": "$2",
@@ -642,16 +636,16 @@
     }
   },
   "errorNoBookmarkFolderFound": {
-    "message": "No bookmark folder found", // new
-    "description": "Report that no bookmark folder was found"
+    "message": "未找到书签文件夹",
+    "description": "报告未找到书签文件夹"
   },
   "messageStripMarked": {
-    "message": "剥离已选中书签的描述",
-    "description": "Report that description stripping started"
+    "message": "正在剥离已选中书签的描述",
+    "description": "报告剥离描述已开始"
   },
   "messageStripProgress": {
     "message": "($PERCENTAGE$%) $TOTAL$ / $TODO$ 个描述已剥离",
-    "description": "Report that specified number/total/percentage of descriptions are stripped",
+    "description": "报告指定数量/总数/百分比的描述已被剥离",
     "placeholders": {
       "total": {
         "content": "$1",
@@ -668,8 +662,8 @@
     }
   },
   "messageStripSuccess": {
-    "message": "$TOTAL$ 描述已剥离！",
-    "description": "Report success when stripping specified number of descriptions",
+    "message": "$TOTAL$ 个描述已剥离！",
+    "description": "报告剥离指定数量描述成功",
     "placeholders": {
       "total": {
         "content": "$1",
@@ -679,11 +673,11 @@
   },
   "messageStripError": {
     "message": "剥离 $TOTAL$ 个描述时出错：$ERROR$",
-    "description": "Report specified error after stripping specified number of descriptions",
+    "description": "报告剥离指定数量描述后出现的错误",
     "placeholders": {
       "error": {
         "content": "$1",
-        "example": "error description" // new
+        "example": "错误描述"
       },
       "total": {
         "content": "$2",
