@@ -1,19 +1,25 @@
 # bookmark-search
 
+![Deploy Site](https://github.com/hantang/search-bookmark/actions/workflows/deploy.yml/badge.svg)
+![GitHub Tag](https://img.shields.io/github/v/tag/hantang/search-bookmark)
+![GitHub Commit](https://img.shields.io/github/last-commit/hantang/search-bookmark)
+
+[:memo: 中文](./README.zh-CN.md)
+
 Search your bookmarks in a more flexible way.
 
 ## Features
 
-- Load from browser's bookmarks (Chrome extension only).
-- Parse from bookmark file automatically.
+- Load from browser's bookmarks (Chrome/Chromium extension only).
+- Parse from bookmark file (html format) automatically.
 - RegExp search.
 - Highlight.
 - Sort by columns.
 
 ## Versions
 
-- 🎨 Chrome extension: download `zip` file from latest [release](https://github.com/hantang/bookmark-search/releases) and unpacked it, then open `chrome://extensions/` in your browser, enable _Developer mode_ and then _Load upacked_ the directory.
-- Web online version, use this [site link](https://hantang.github.io/bookmark-search).
+- :art: Chrome extension: download `zip` file from latest [release](https://github.com/hantang/search-bookmark/releases) and unpacked it, then open `chrome://extensions/` in your browser, enable _Developer mode_ and then _Load unpacked_ the directory.
+- Web online version, use this [:link: site link](https://hantang.github.io/search-bookmark).
 
 ## Snapshots
 
@@ -26,7 +32,7 @@ Search your bookmarks in a more flexible way.
 ## Changelog
 
 - :tada: Add `pintree` page, forked from [Pintree-io/pintree](https://github.com/Pintree-io/pintree): change [json file](./src/json/pintree.json) before deploy.
-- :tata: Add `dupes`, forked from [vaeth/bookmarkdupes](https://github.com/vaeth/bookmarkdupes): only from extension version.
+- :rocket: Add `dupes` page, forked from [vaeth/bookmarkdupes](https://github.com/vaeth/bookmarkdupes): only from extension version.
 
 ## TODO
 
@@ -34,4 +40,4 @@ Search your bookmarks in a more flexible way.
 
 ## More
 
-The icon is from [iconfinder](https://www.iconfinder.com/icons/8725808).
+The icon is from [:link: iconfinder](https://www.iconfinder.com/icons/8725808).
