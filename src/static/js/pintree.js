@@ -177,8 +177,10 @@ function createCard(title, url, icon) {
     "cursor-pointer flex items-center hover:shadow-sm transition-shadow p-4 bg-white shadow-sm ring-1 ring-gray-900/5 dark:pintree-ring-gray-800 rounded-lg hover:bg-gray-100 dark:pintree-bg-gray-900 dark:hover:pintree-bg-gray-800";
   card.onclick = () => window.open(url, "_blank"); // Make the whole card clickable
 
+  const hostname = new URL(url).hostname;
+  // const faviconSite = "https://logo.clearbit.com"; // https://favicon.im
   const cardIcon = document.createElement("img");
-  cardIcon.src = icon || "assets/default-icon.svg"; // Use provided icon or default icon
+  cardIcon.src = icon || `https://api.faviconkit.com/${hostname}`;
   cardIcon.alt = title;
   cardIcon.className = "w-8 h-8 mr-4 rounded-full flex-shrink-0 card-icon-bg"; // Smaller size and rounded
 
@@ -334,8 +336,9 @@ async function getBookmarksFromBrowser() {
     chrome.bookmarks.getTree((bookmarkTreeNodes) => {
       const bookmarks = [];
       bookmarkTreeNodes.forEach((node) => {
-        const structuredBookmarks = extractBookmarks(node);
+        const structuredBookmarks = extractBookmarks(node, 0);
         if (structuredBookmarks) {
+          // console.log(structuredBookmarks, structuredBookmarks);
           bookmarks.push(structuredBookmarks);
         }
       });
@@ -344,14 +347,25 @@ async function getBookmarksFromBrowser() {
   });
 }
 
-function extractBookmarks(node) {
+function extractBookmarks(node, level) {
   if (node.url) {
     // 如果是书签，返回对象
-    return { title: node.title, url: node.url, id: node.id, dateAdded: node.dateAdded };
+    return {
+      title: node.title,
+      url: node.url,
+      id: node.id,
+      dateAdded: node.dateAdded,
+      icon: node.icon,
+    };
   } else if (node.children) {
     // 如果是目录，返回包含子项的对象
-    const children = node.children.map((childNode) => extractBookmarks(childNode)).filter(Boolean);
-    return { title: node.title ? node.title : "ROOT", children: children };
+    const children = node.children
+      .map((childNode) => extractBookmarks(childNode, level + 1))
+      .filter(Boolean);
+    return {
+      title: node.title ? node.title : level === 0 ? "ROOT" : `LEVEL-${level}`,
+      children: children,
+    };
   }
   return null; // 无效节点
 }
@@ -368,7 +382,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const yearElement = document.getElementById("currentYear");
   const startYear = 2024;
   const currentYear = new Date().getFullYear();
-  yearElement.textContent = currentYear === startYear ? currentYear : `${startYear} - ${currentYear}`;
+  yearElement.textContent =
+    currentYear === startYear ? currentYear : `${startYear} - ${currentYear}`;
 
   // TODO side bar
   // // Variables for sidebar elements
@@ -415,24 +430,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   let bookmarks = [];
 
   if (isBrowserEnvironment()) {
-    console.log("read from isBrowserEnvironment");
+    // console.log("read from isBrowserEnvironment");
     bookmarks = await getBookmarksFromBrowser();
   } else {
-    console.log("read from Local");
+    // console.log("read from Local");
     bookmarks = await getBookmarksFromLocalFile();
   }
-  console.log("bookmarks", bookmarks.length);
-  console.log(bookmarks);
 
-  // const table = document.getElementById('bookmarksTable');
-  // bookmarks.forEach(bookmark => {
-  //     populateTable(bookmark, table);
-  // });
-
-  // fetch(dataFile)
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  // Hide loading spinner
   document.getElementById("loading-spinner").style.display = "none";
 
   // Use the first layer of the data directly

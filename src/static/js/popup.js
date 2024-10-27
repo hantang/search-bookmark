@@ -1,37 +1,48 @@
-document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("loadBookmarksButton")
-    .addEventListener("click", function () {
-      chrome.tabs.create({ url: "index.html" });
-    });
-});
+function getBrowserName() {
+  const userAgent = navigator.userAgent;
+  const browsers = ["Chrome", "Firefox", "Safari", "Edg", "Vivaldi", "Brave"];
+  // match browser names
+  const browser = browsers.find((browser) => userAgent.includes(browser));
+  return browser ? browser.toLowerCase() : "unk-browser";
+}
 
-document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("navigateBookmarksButton")
-    .addEventListener("click", function () {
-      chrome.tabs.create({ url: "pintree.html" });
-    });
-});
+function downloadJson(data) {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const formattedDate = `${year}${month}${day}`;
+  const browser = getBrowserName();
+  const filename = `${browser}-bookmarks-${formattedDate}.json`;
 
-// export html2json
+  const blob = new Blob([data], { type: "application/json" });
+  if (window.navigator && window.navigator.msSaveBlob) {
+    // Edge
+    console.log("edge");
+    window.navigator.msSaveBlob(blob, filename);
+  } else {
+    // Chrome
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    a.click();
+  }
+}
 
-document
-  .getElementById("exportBookmarksButton")
-  .addEventListener("click", () => {
-    chrome.bookmarks.getTree((bookmarks) => {
-      // TODO
-      const bookmarksJson = JSON.stringify(bookmarks, null, 2);
-      downloadJson(bookmarksJson, "bookmarks.json");
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("loadBookmarksButton").addEventListener("click", () => {
+    chrome.tabs.create({ url: "index.html" });
   });
 
-function downloadJson(data, filename) {
-  const blob = new Blob([data], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  a.click();
-  URL.revokeObjectURL(url);
-}
+  document.getElementById("navigateBookmarksButton").addEventListener("click", () => {
+    chrome.tabs.create({ url: "pintree.html" });
+  });
+
+  // export html2json
+  document.getElementById("exportBookmarksButton").addEventListener("click", () => {
+    chrome.bookmarks.getTree((bookmarks) => {
+      const bookmarksJson = JSON.stringify(bookmarks, null, 2);
+      downloadJson(bookmarksJson);
+    });
+  });
+});

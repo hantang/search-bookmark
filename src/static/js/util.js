@@ -4,7 +4,7 @@ function isValidDate(dateString) {
   // check column is a date column
   // 2024-02-01, 2024-02-01 12:12:12, 2024-02-01T13:32:39.026Z
   const pattern = /\d{4}-\d{2}-\d{2}([T ]\d{2}:\d{2}:\d{2}(\.\d*)?Z?)?/;
-  return dateString === '' || pattern.test(dateString);
+  return dateString === "" || pattern.test(dateString);
 }
 
 function collectBookmarks(bookmarkNodes) {
@@ -14,10 +14,10 @@ function collectBookmarks(bookmarkNodes) {
       bookmarks.push({ url: node.url, title: node.title, path: currentPath });
     } else if (node.children) {
       const newPath = currentPath + node.title + "/";
-      node.children.forEach(child => traverse(child, newPath));
+      node.children.forEach((child) => traverse(child, newPath));
     }
   }
-  bookmarkNodes.forEach(node => traverse(node, ""));
+  bookmarkNodes.forEach((node) => traverse(node, ""));
   return bookmarks;
 }
 
@@ -31,10 +31,18 @@ function getBookmarkDetails(bookmark) {
         ...bookmark,
         visited: visitCount > 0,
         lastVisitTime,
-        visitCount
+        visitCount,
       });
     });
   });
+}
+
+function getFavicon(url) {
+  const isFirefox = navigator.userAgent.includes("Firefox");
+  if (isFirefox) {
+    return `http://www.google.com/s2/favicons?domain_url=${url}`;
+  }
+  return `${chrome.runtime.getURL("/_favicon?")}pageUrl=${encodeURIComponent(url)}&size=32`;
 }
 
 function createBookmarkTable(bookmarks, hasVisited = true) {
@@ -46,35 +54,41 @@ function createBookmarkTable(bookmarks, hasVisited = true) {
 
   const headers = ["Bookmark", "Website", "Folder", "FullFolder", "HasPath", "Duplicated"];
   if (hasVisited) {
-    headers.push(...["LastVisitTime", "VisitCount"])
+    headers.push(...["LastVisitTime", "VisitCount"]);
   }
 
-  const table = document.createElement('table');
+  const table = document.createElement("table");
   const thead = table.createTHead();
   const tbody = table.createTBody();
   const row = thead.insertRow();
 
-  headers.forEach(headerText => {
-    let header = document.createElement('th');
+  headers.forEach((headerText) => {
+    let header = document.createElement("th");
     header.textContent = headerText;
     row.appendChild(header);
   });
 
-  bookmarks.forEach(bookmark => {
+  bookmarks.forEach((bookmark) => {
     const title = bookmark.title.trim();
     const href = bookmark.url;
     const fullFolder = bookmark.path.endsWith("/") ? bookmark.path.slice(0, -1) : bookmark.path;
-    const folders = fullFolder.split("/")
-    const folder = folders ? folders[folders.length - 1] : '';
+    const folders = fullFolder.split("/");
+    const folder = folders ? folders[folders.length - 1] : "";
 
     const url = new URL(href);
     const hostname = url.hostname;
-    const hasPath = url.pathname && url.pathname !== '/';
-    const dup = frequencyCounter[href] > 1
+    const hasPath = url.pathname && url.pathname !== "/";
+    const dup = frequencyCounter[href] > 1;
 
-    const link = document.createElement('a');
+    const cardIcon = document.createElement("img");
+    // cardIcon.src = `https://api.faviconkit.com/${hostname}`;
+    cardIcon.src = getFavicon(url);
+    const titleText = document.createTextNode(title);
+
+    const link = document.createElement("a");
     link.href = url;
-    link.textContent = title;
+    link.appendChild(cardIcon);
+    link.appendChild(titleText);
 
     const texts = [link, hostname, folder, fullFolder, hasPath, dup];
     if (hasVisited) {
@@ -86,11 +100,11 @@ function createBookmarkTable(bookmarks, hasVisited = true) {
         const trCell = tr.insertCell();
         trCell.appendChild(text);
       } else {
-        tr.insertCell().textContent = text
+        tr.insertCell().textContent = text;
       }
     });
   });
-  return table
+  return table;
 }
 
 async function loadBookmarkTree() {
@@ -98,28 +112,30 @@ async function loadBookmarkTree() {
   try {
     const bookmarkTree = await chrome.bookmarks.getTree();
     const bookmarksData = collectBookmarks(bookmarkTree);
-    const bookmarkDetailsPromises = bookmarksData.map(bookmark => getBookmarkDetails(bookmark));
+    const bookmarkDetailsPromises = bookmarksData.map((bookmark) => getBookmarkDetails(bookmark));
     const bookmarks = await Promise.all(bookmarkDetailsPromises);
-    const table = createBookmarkTable(bookmarks, hasVisited = true);
+    const table = createBookmarkTable(bookmarks, (hasVisited = true));
     renderPages(table);
   } catch (error) {
-    console.error('Error processing bookmarks:', error);
+    console.error("Error processing bookmarks:", error);
   }
 }
 
 function collectBookmarksFromFile(rootNode) {
   let bookmarks = [];
-  function traverse(node, currentPath = '') {
+  function traverse(node, currentPath = "") {
     const tag = node.tagName.toUpperCase();
     let path = currentPath;
-    if (tag == 'DT') {
-      const folder = node.querySelector('h3');
+    if (tag == "DT") {
+      const folder = node.querySelector("h3");
       const anchor = node.querySelector("a");
       if (folder) {
         path = currentPath + "/" + folder.textContent;
       } else if (anchor) {
         bookmarks.push({
-          url: anchor.href, title: anchor.textContent, path: path,
+          url: anchor.href,
+          title: anchor.textContent,
+          path: path,
         });
       }
     }
@@ -132,28 +148,28 @@ function collectBookmarksFromFile(rootNode) {
 }
 
 function loadBookmarkFile(file) {
-  if (file && file.type === 'text/html') {
+  if (file && file.type === "text/html") {
     const reader = new FileReader();
     reader.onload = async function (event) {
       const fileContent = event.target.result;
       const parser = new DOMParser();
-      const doc = parser.parseFromString(fileContent, 'text/html');
-      var table = doc.querySelector('table');
+      const doc = parser.parseFromString(fileContent, "text/html");
+      var table = doc.querySelector("table");
 
-      if (!table && doc.querySelectorAll('dl dt').length > 0) {
-        const rootNode = doc.querySelector('body');
+      if (!table && doc.querySelectorAll("dl dt").length > 0) {
+        const rootNode = doc.querySelector("body");
         const bookmarks = collectBookmarksFromFile(rootNode);
-        table = createBookmarkTable(bookmarks, hasVisited = false);
+        table = createBookmarkTable(bookmarks, (hasVisited = false));
       }
       if (table) {
         renderPages(table);
       } else {
-        alert('No table or bookmarks found in the HTML file.');
+        alert("No table or bookmarks found in the HTML file.");
       }
     };
     reader.readAsText(file);
   } else {
-    alert('Please drop an HTML file.');
+    alert("Please drop an HTML file.");
   }
 }
 
@@ -173,23 +189,23 @@ function openSameFileAgain(event) {
   if (selectedFile) {
     const file = event.target.files[0];
     loadBookmarkFile(file);
-    event.target.value = ''; // allow open same file again
+    event.target.value = ""; // allow open same file again
   }
 }
 
-function createRadioOrCheckbox(itemList, className, isRadio = false, name = '') {
+function createRadioOrCheckbox(itemList, className, isRadio = false, name = "") {
   const container = document.createElement("div");
   itemList.forEach((item, index) => {
-    const option = document.createElement('input');
+    const option = document.createElement("input");
     option.className = className;
     option.value = item;
-    option.type = isRadio ? 'radio' : 'checkbox';
+    option.type = isRadio ? "radio" : "checkbox";
     option.name = name;
     if (isRadio && index == 0) {
       option.checked = true;
     }
 
-    const label = document.createElement('label');
+    const label = document.createElement("label");
     label.textContent = item;
 
     container.appendChild(option);
@@ -200,25 +216,25 @@ function createRadioOrCheckbox(itemList, className, isRadio = false, name = '') 
 
 function createTextInput(item, className, name) {
   const container = document.createElement("div");
-  const label = document.createElement('label');
-  label.textContent = item + ': ';
-  const input = document.createElement('input');
-  input.type = 'text';
+  const label = document.createElement("label");
+  label.textContent = item + ": ";
+  const input = document.createElement("input");
+  input.type = "text";
   input.name = name;
   // label.toLowerCase().replace(/\s/g, '_');
   input.className = className;
 
   container.appendChild(label);
   container.appendChild(input);
-  return container
+  return container;
 }
 
 // more
 function sortTable(column, table) {
   // sort table depends on its type (string, number, date)
   const rows = Array.from(table.getElementsByTagName("tr")).slice(1);
-  const isDateColumn = rows.every(row => isValidDate(row.cells[column].innerText));
-  const isNumericColumn = rows.every(row => !isNaN(parseFloat(row.cells[column].innerText)))
+  const isDateColumn = rows.every((row) => isValidDate(row.cells[column].innerText));
+  const isNumericColumn = rows.every((row) => !isNaN(parseFloat(row.cells[column].innerText)));
 
   let sortOrder = 1;
   const sortedColumn = table.getAttribute("data-sorted-column");
@@ -236,9 +252,9 @@ function sortTable(column, table) {
     const cellA = rowA.cells[column].innerText;
     const cellB = rowB.cells[column].innerText;
     if (isDateColumn) {
-      const dateA = cellA === '' ? new Date(0) : new Date(cellA);
-      const dateB = cellB === '' ? new Date(0) : new Date(cellB);
-      return (dateA - dateB) * sortOrder;;
+      const dateA = cellA === "" ? new Date(0) : new Date(cellA);
+      const dateB = cellB === "" ? new Date(0) : new Date(cellB);
+      return (dateA - dateB) * sortOrder;
     } else if (isNumericColumn) {
       return (parseFloat(cellA) - parseFloat(cellB)) * sortOrder;
     } else {
