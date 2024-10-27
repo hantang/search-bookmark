@@ -12,7 +12,7 @@ Search your bookmarks in a more flexible way.
 
 ## Versions
 
-- 🎨 Chrome extension: download `zip` file from latest [release](https://github.com/hantang/bookmark-search/releases) and unpacked it, then open `chrome://extensions/` in your browser, enable *Developer mode* and then *Load upacked* the directory.
+- 🎨 Chrome extension: download `zip` file from latest [release](https://github.com/hantang/bookmark-search/releases) and unpacked it, then open `chrome://extensions/` in your browser, enable _Developer mode_ and then _Load upacked_ the directory.
 - Web online version, use this [site link](https://hantang.github.io/bookmark-search).
 
 ## Snapshots
@@ -28,6 +28,10 @@ Search your bookmarks in a more flexible way.
 - :tada: Add `pintree` page, forked from [Pintree-io/pintree](https://github.com/Pintree-io/pintree).
 - :tata: Add `dupes`, forked from [vaeth/bookmarkdupes](https://github.com/vaeth/bookmarkdupes)
 
-## More 
+## TODO
+
+- [ ] export error of `Vivaldi` browser.
+
+## More
 
 The icon is from [iconfinder](https://www.iconfinder.com/icons/8725808).

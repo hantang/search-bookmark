@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Bookmark Search",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "HTML Bookmark Search with RegExp",
   "short_name": "bookmark-search",
   "author": "hantang",
