@@ -45,7 +45,54 @@ function getFavicon(url) {
   return `${chrome.runtime.getURL("/_favicon?")}pageUrl=${encodeURIComponent(url)}&size=32`;
 }
 
-function createBookmarkTable(bookmarks, hasVisited = true) {
+// async function getFavicon2(url) {
+//   // TODO
+//   const defaultIcon = "assets/default-icon.svg";
+//   console.log(url);
+//   if (url.includes("chromewebstore.google.com")) {
+//     return defaultIcon;
+//   }
+//   try {
+//     // const response = await fetch(url);
+//     const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
+//     const response = await fetch(proxyUrl, { method: "HEAD" });
+//     // Check if the response is okay
+//     if (!response.ok) {
+//       return defaultIcon;
+//     }
+//     const text = await response.text();
+//     const parser = new DOMParser();
+//     const doc = parser.parseFromString(text, "text/html");
+//     const iconLink = doc.querySelector("link[rel*='icon']");
+//
+//     return iconLink ? iconLink.href : defaultIcon;
+//   } catch (error) {
+//     console.error("Failed favicon:", error);
+//     return defaultIcon;
+//   }
+// }
+//
+// async function getFaviconForHostnames(bookmarks) {
+//   const faviconMap = {};
+//   const hostnameDict = {};
+//   bookmarks.forEach((bookmark) => {
+//     hostname = new URL(bookmark.url).hostname;
+//     if (!hostnameDict[hostname]) {
+//       hostnameDict[hostname] = bookmark.url; // first URL
+//     }
+//   });
+//
+//   // request favicon
+//   for (const hostname in hostnameDict) {
+//     const url = hostnameDict[hostname];
+//     faviconMap[hostname] = await getFavicon2(url);
+//   }
+//
+//   return faviconMap;
+// }
+
+function createBookmarkTable(bookmarks, hasVisited, isExtension, faviconMap) {
+  console.log("hasVisited", hasVisited, "isExtension", isExtension);
   const frequencyCounter = {};
   for (const bookmark of bookmarks) {
     const element = bookmark.url;
@@ -81,8 +128,9 @@ function createBookmarkTable(bookmarks, hasVisited = true) {
     const dup = frequencyCounter[href] > 1;
 
     const cardIcon = document.createElement("img");
-    // cardIcon.src = `https://api.faviconkit.com/${hostname}`;
-    cardIcon.src = getFavicon(url);
+    cardIcon.src = isExtension
+      ? getFavicon(url)
+      : faviconMap[hostname] || `https://${hostname}/favicon.ico`;
     const titleText = document.createTextNode(title);
 
     const link = document.createElement("a");
@@ -114,7 +162,7 @@ async function loadBookmarkTree() {
     const bookmarksData = collectBookmarks(bookmarkTree);
     const bookmarkDetailsPromises = bookmarksData.map((bookmark) => getBookmarkDetails(bookmark));
     const bookmarks = await Promise.all(bookmarkDetailsPromises);
-    const table = createBookmarkTable(bookmarks, (hasVisited = true));
+    const table = createBookmarkTable(bookmarks, true, true, {});
     renderPages(table);
   } catch (error) {
     console.error("Error processing bookmarks:", error);
@@ -147,24 +195,55 @@ function collectBookmarksFromFile(rootNode) {
   return bookmarks;
 }
 
-function loadBookmarkFile(file) {
-  if (file && file.type === "text/html") {
-    const reader = new FileReader();
-    reader.onload = async function (event) {
-      const fileContent = event.target.result;
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(fileContent, "text/html");
-      var table = doc.querySelector("table");
+async function loadBookmarkHtmlFile(fileContent) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(fileContent, "text/html");
+  var table = doc.querySelector("table");
 
-      if (!table && doc.querySelectorAll("dl dt").length > 0) {
-        const rootNode = doc.querySelector("body");
-        const bookmarks = collectBookmarksFromFile(rootNode);
-        table = createBookmarkTable(bookmarks, (hasVisited = false));
-      }
-      if (table) {
-        renderPages(table);
+  if (!table && doc.querySelectorAll("dl dt").length > 0) {
+    const rootNode = doc.querySelector("body");
+    const bookmarks = collectBookmarksFromFile(rootNode);
+    // const faviconMap = await getFaviconForHostnames(bookmarks);
+    const faviconMap = {};
+    table = createBookmarkTable(bookmarks, false, false, faviconMap);
+  }
+
+  if (table) {
+    renderPages(table);
+  } else {
+    alert("No table or bookmarks found in the HTML file.");
+  }
+}
+
+async function loadBookmarkJsonFile(fileContent) {
+  const data = JSON.parse(fileContent);
+  const bookmarks = collectBookmarks(data);
+  // const bookmarks = rootNode;
+  // const faviconMap = await getFaviconForHostnames(bookmarks);
+  const faviconMap = {};
+  const table = createBookmarkTable(bookmarks, false, false, faviconMap);
+  if (table) {
+    renderPages(table);
+  } else {
+    alert("No table or bookmarks found in the HTML file.");
+  }
+}
+
+async function loadBookmarkFile(file) {
+  if (file) {
+    const fileType = file.type;
+    if (fileType !== "text/html" && fileType !== "application/json") {
+      alert("Upload HTML / JSON file!");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+      const fileContent = event.target.result;
+      if (file.type === "text/html") {
+        await loadBookmarkHtmlFile(fileContent);
       } else {
-        alert("No table or bookmarks found in the HTML file.");
+        await loadBookmarkJsonFile(fileContent);
       }
     };
     reader.readAsText(file);
