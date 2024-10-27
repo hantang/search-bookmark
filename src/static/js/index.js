@@ -3,6 +3,7 @@ const clearButtonStr = "clear-button";
 const expandButtonStr = "expand-button";
 const searchButtonStr = "search-button";
 const resetButtonStr = "reset-button";
+const exportButtonStr = "export-button";
 const extensionButtonStr = "extension-button";
 const openFileButtonStr = "open-file-button";
 
@@ -289,25 +290,35 @@ function checkConditionOption(index = 0) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const yearElement = document.getElementById("currentYear");
   const startYear = 2024;
   const currentYear = new Date().getFullYear();
-  yearElement.textContent = currentYear === startYear ? currentYear : `${startYear} - ${currentYear}`;
+  yearElement.textContent =
+    currentYear === startYear ? currentYear : `${startYear} - ${currentYear}`;
 
   // add events
-  // check chrome extension api env
-  const isExtensionEnvironment = typeof chrome !== "undefined" && chrome.extension;
-  if (isExtensionEnvironment) {
+  const isExtEnv = isBrowserEnvironment();
+  const exportButton = document.getElementById(exportButtonStr);
+  if (isExtEnv) {
     const extensionButton = document.getElementById(extensionButtonStr);
     extensionButton.style.display = "";
     extensionButton.addEventListener("click", loadBookmarkTree);
+
+    // support export bookmarks to json file
+    exportButton.style.display = "";
+    exportButton.addEventListener("click", () => {
+      chrome.bookmarks.getTree((bookmarks) => {
+        const bookmarksJson = JSON.stringify(bookmarks, null, 2);
+        downloadJson(bookmarksJson);
+      });
+    });
   } else {
     const openFileButton = document.getElementById(openFileButtonStr);
     const fileInput = document.getElementById(openFileStr);
     const dropArea = document.getElementById(dropAreaStr);
     openFileButton.style.display = "";
     dropArea.style.display = "";
+    exportButton.style.display = "none";
 
     openFileButton.addEventListener("click", openBookmarkFile);
     fileInput.addEventListener("change", openSameFileAgain);

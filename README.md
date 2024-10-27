@@ -36,7 +36,10 @@ Search your bookmarks in a more flexible way.
 
 ## TODO
 
-- [ ] export error of `Vivaldi` browser.
+- [ ] Export error of `Vivaldi` browser (in extension popup.html)
+  - [x] Export from bookmark search page (only extension, JSON format).
+- [x] Support load from JSON format file (only web page).
+- [ ] Parse favicon from url.
 
 ## More
 

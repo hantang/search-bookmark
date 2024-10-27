@@ -327,10 +327,7 @@ function renderBookmarks(data, path) {
   updateSidebarActiveState(path);
 }
 
-function isBrowserEnvironment() {
-  // 简单判断是否在 Chrome 环境中
-  return typeof chrome !== "undefined" && chrome.bookmarks;
-}
+
 async function getBookmarksFromBrowser() {
   return new Promise((resolve) => {
     chrome.bookmarks.getTree((bookmarkTreeNodes) => {
@@ -428,7 +425,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Fetch and render data
 
   let bookmarks = [];
-
   if (isBrowserEnvironment()) {
     // console.log("read from isBrowserEnvironment");
     bookmarks = await getBookmarksFromBrowser();
