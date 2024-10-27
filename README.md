@@ -23,6 +23,9 @@ Search your bookmarks in a more flexible way.
 - web online version:
   ![snapshot](images/snapshot-web.png)
 
+## Changelog
+
+- :tada: Add `pintree` page, forked from [Pintree-io/pintree](https://github.com/Pintree-io/pintree).
 
 ## More 
 

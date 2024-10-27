@@ -1,14 +1,25 @@
 #!/usr/bin/env bash
 set -eu
+TARGET="${1:-site}"
+SOURCE="${2:-src}"
 
-TARGET="site"
+ignores=("manifest.json" "popup.html")
 
-pwd
+echo "target: ${TARGET} / source: ${SOURCE}"
 
 if [[ -d $TARGET ]]; then
-    echo "*** clean $TARGET"
-    rm -rf $TARGET
+	echo "*** clean $TARGET"
+	rm -rf $TARGET
 fi
-cp -r src/$TARGET ./$TARGET
+
+echo "copy to target"
+cp -r ${SOURCE} ./$TARGET
+
+echo "clean to ignores"
+for name in "${ignores[@]}"; do
+	if [[ -f $TARGET/$name ]]; then
+		rm -rf $TARGET/$name
+	fi
+done
 
 echo "Done"
