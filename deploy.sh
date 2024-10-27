@@ -3,7 +3,7 @@ set -eu
 TARGET="${1:-site}"
 SOURCE="${2:-src}"
 
-ignores=("manifest.json" "popup.html")
+ignores=("manifest.json" "popup.html" "dupes.html" "static/js/dupes.js")
 
 echo "target: ${TARGET} / source: ${SOURCE}"
 

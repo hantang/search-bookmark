@@ -25,8 +25,8 @@ Search your bookmarks in a more flexible way.
 
 ## Changelog
 
-- :tada: Add `pintree` page, forked from [Pintree-io/pintree](https://github.com/Pintree-io/pintree).
-- :tata: Add `dupes`, forked from [vaeth/bookmarkdupes](https://github.com/vaeth/bookmarkdupes)
+- :tada: Add `pintree` page, forked from [Pintree-io/pintree](https://github.com/Pintree-io/pintree): change [json file](./src/json/pintree.json) before deploy.
+- :tata: Add `dupes`, forked from [vaeth/bookmarkdupes](https://github.com/vaeth/bookmarkdupes): only from extension version.
 
 ## TODO
 
