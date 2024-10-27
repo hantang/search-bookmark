@@ -4,22 +4,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML Bookmark Search with RegExp</title>
-  <link rel="icon" type="image/png" href="icons/icon48.png">
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <title>Bookmark Search</title>
+  <link rel="icon" type="image/png" href="assets/icons/icon48.png">
+
+  <link rel="icon" href="assets/icons/icon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="icon" href="assets/icons/icon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/icons/icon-48x48.png" sizes="48x48" type="image/png">
+  <link rel="icon" href="assets/icons/icon-64x64.png" sizes="64x64" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-icon.png" sizes="180x180">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" type="text/css" href="static/css/index.css">
 </head>
 
 <body>
 
   <header>
     <div>
-      <svg width="64px" height="64px" viewBox="0 0 3.84 3.84" version="1" xmlns="http://www.w3.org/2000/svg"
+      <!-- <svg width="64px" height="64px" viewBox="0 0 3.84 3.84" version="1" xmlns="http://www.w3.org/2000/svg"
         enable-background="new 0 0 48 48">
         <path fill="#F44336"
           d="m2.96 3.44 -1.04 -0.48 -1.04 0.48V0.72c0 -0.176 0.144 -0.32 0.32 -0.32h1.44c0.176 0 0.32 0.144 0.32 0.32z" />
-      </svg>
+      </svg> -->
+      <img src="assets/logo.svg" alt="Bookmarks">
     </div>
-    <h1>HTML Bookmark Search with RegExp</h1>
+    <h1>Bookmark Search (RegExp)</h1>
   </header>
 
   <main>
@@ -58,11 +67,11 @@
   </main>
 
   <footer>
-    <p>&copy; 2024 hantang</p>
+    <p>&copy; <span id="currentYear"></span> hantang</p>
   </footer>
 
-  <script src="js/util.js"></script>
-  <script src="js/render.js"></script>
+  <script src="static/js/util.js"></script>
+  <script src="static/js/index.js"></script>
 </body>
 
 </html>

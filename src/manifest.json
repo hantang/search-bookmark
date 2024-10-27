@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Bookmark Search",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "HTML Bookmark Search with RegExp",
   "short_name": "bookmark-search",
   "author": "hantang",
-  "homepage_url": "https://github.com/hantang/bookmark-search/",
+  "homepage_url": "https://github.com/hantang/search-bookmark/",
   "permissions": [
     "activeTab",
     "bookmarks",
@@ -15,8 +15,9 @@
     "default_popup": "popup.html"
   },
   "icons": {
-    "16": "site/icons/icon16.png",
-    "48": "site/icons/icon48.png",
-    "128": "site/icons/icon128.png"
+    "16": "assets/icons/icon-16x16.png",
+    "48": "assets/icons/icon-48x48.png",
+    "64": "assets/icons/icon-64x64.png",
+    "128": "assets/icons/icon-128x128.png"
   }
 }
