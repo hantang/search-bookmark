@@ -1,6 +1,6 @@
 {
   "name": "search-bookmark",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "HTML Bookmark Search with RegExp",
   "main": "main.js",
   "keywords": [
