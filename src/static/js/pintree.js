@@ -178,7 +178,7 @@ function createCard(title, url, icon) {
   card.onclick = () => window.open(url, "_blank"); // Make the whole card clickable
 
   const hostname = new URL(url).hostname;
-  // const faviconSite = "https://logo.clearbit.com"; // https://favicon.im
+  // const faviconSite = "https://favicon.im"; // https://favicon.im
   const cardIcon = document.createElement("img");
   cardIcon.src = icon || `https://api.faviconkit.com/${hostname}`;
   cardIcon.alt = title;

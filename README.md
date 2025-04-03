@@ -32,6 +32,7 @@ Search your bookmarks in a more flexible way.
 ## Changelog
 
 - :tada: Add `pintree` page, forked from [Pintree-io/pintree](https://github.com/Pintree-io/pintree): change [json file](./src/json/pintree.json) before deploy. `MIT license`
+  - replace icon api from `logo.clearbit.com` to `favicon.im`
 - :rocket: Add `dupes` page, forked from [vaeth/bookmarkdupes](https://github.com/vaeth/bookmarkdupes): only from extension version. `GNU Public License 2.0`
 
 ## TODO
